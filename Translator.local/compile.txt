@@ -1,0 +1,5 @@
+==============
+USE CYGWIN64
+==============
+
+bison -d grammar.y; flex lexer.l; gcc dynamicarray.c lex.yy.c grammar.tab.c; ./a.exe
