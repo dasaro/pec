@@ -413,30 +413,30 @@ static const yytype_uint8 yytranslate[] =
    YYRHS.  */
 static const yytype_uint8 yyprhs[] =
 {
-       0,     0,     3,     4,     7,     9,    11,    13,    15,    21,
-      25,    34,    39,    43,    45,    53,    54,    57,    58,    62,
-      66,    70
+       0,     0,     3,     7,     9,    10,    13,    15,    17,    19,
+      21,    27,    31,    40,    45,    49,    51,    59,    60,    63,
+      64,    68
 };
 
 /* YYRHS -- A `-1'-separated list of the rules' RHS.  */
 static const yytype_int8 yyrhs[] =
 {
-      18,     0,    -1,    -1,    19,    18,    -1,    20,    -1,    21,
-      -1,    22,    -1,    23,    -1,    14,     6,     9,    29,    10,
-      -1,    14,     5,    16,    -1,     9,    27,    28,    10,     3,
-       9,    24,    10,    -1,     4,     9,    24,    10,    -1,    24,
-      11,    25,    -1,    25,    -1,     7,     9,    26,    10,    11,
-      15,     8,    -1,    -1,    27,    28,    -1,    -1,    27,    28,
-      11,    -1,    14,    13,    14,    -1,    29,    11,    14,    -1,
+      19,     0,    -1,    18,    11,    14,    -1,    14,    -1,    -1,
+      20,    19,    -1,    21,    -1,    22,    -1,    23,    -1,    24,
+      -1,    14,     6,     9,    18,    10,    -1,    14,     5,    16,
+      -1,     9,    28,    29,    10,     3,     9,    25,    10,    -1,
+       4,     9,    25,    10,    -1,    25,    11,    26,    -1,    26,
+      -1,     7,     9,    27,    10,    11,    15,     8,    -1,    -1,
+      28,    29,    -1,    -1,    28,    29,    11,    -1,    14,    13,
       14,    -1
 };
 
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    47,    47,    50,    54,    56,    58,    60,    64,    76,
-      80,   124,   139,   141,   145,   153,   157,   164,   168,   175,
-     186,   191
+       0,    46,    46,    51,    58,    61,    65,    67,    69,    71,
+      75,    87,    91,   135,   150,   152,   156,   164,   168,   175,
+     179,   186
 };
 #endif
 
@@ -447,10 +447,10 @@ static const char *const yytname[] =
 {
   "$end", "error", "$undefined", "CAUSES", "INITIALLY", "PERFORMED",
   "TAKESVALUES", "'('", "')'", "'{'", "'}'", "','", "';'", "'='", "OBJECT",
-  "FRACTION", "INSTANT", "$accept", "domain_description", "statement",
-  "takesvalues", "performed", "causes", "initially", "list_pairs", "pair",
-  "list_assignments", "loop_list_assignments", "assignment",
-  "list_objects", 0
+  "FRACTION", "INSTANT", "$accept", "list_objects", "domain_description",
+  "statement", "takesvalues", "performed", "causes", "initially",
+  "list_pairs", "pair", "list_assignments", "loop_list_assignments",
+  "assignment", 0
 };
 #endif
 
@@ -467,17 +467,17 @@ static const yytype_uint16 yytoknum[] =
 /* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
 static const yytype_uint8 yyr1[] =
 {
-       0,    17,    18,    18,    19,    19,    19,    19,    20,    21,
-      22,    23,    24,    24,    25,    26,    26,    27,    27,    28,
-      29,    29
+       0,    17,    18,    18,    19,    19,    20,    20,    20,    20,
+      21,    22,    23,    24,    25,    25,    26,    27,    27,    28,
+      28,    29
 };
 
 /* YYR2[YYN] -- Number of symbols composing right hand side of rule YYN.  */
 static const yytype_uint8 yyr2[] =
 {
-       0,     2,     0,     2,     1,     1,     1,     1,     5,     3,
-       8,     4,     3,     1,     7,     0,     2,     0,     3,     3,
-       3,     1
+       0,     2,     3,     1,     0,     2,     1,     1,     1,     1,
+       5,     3,     8,     4,     3,     1,     7,     0,     2,     0,
+       3,     3
 };
 
 /* YYDEFACT[STATE-NAME] -- Default rule to reduce with in state
@@ -485,18 +485,18 @@ static const yytype_uint8 yyr2[] =
    means the default is an error.  */
 static const yytype_uint8 yydefact[] =
 {
-       2,     0,    17,     0,     0,     2,     4,     5,     6,     7,
-       0,     0,     0,     0,     1,     3,     0,     0,    13,     0,
-       0,     9,     0,    15,    11,     0,     0,     0,    18,    21,
-       0,     0,     0,    12,    19,     0,     8,     0,     0,    16,
-       0,    20,     0,     0,     0,    10,    14
+       4,     0,    19,     0,     0,     4,     6,     7,     8,     9,
+       0,     0,     0,     0,     1,     5,     0,     0,    15,     0,
+       0,    11,     0,    17,    13,     0,     0,     0,    20,     3,
+       0,     0,     0,    14,    21,     0,    10,     0,     0,    18,
+       0,     2,     0,     0,     0,    12,    16
 };
 
 /* YYDEFGOTO[NTERM-NUM].  */
 static const yytype_int8 yydefgoto[] =
 {
-      -1,     4,     5,     6,     7,     8,     9,    17,    18,    31,
-      11,    20,    30
+      -1,    30,     4,     5,     6,     7,     8,     9,    17,    18,
+      31,    11,    20
 };
 
 /* YYPACT[STATE-NUM] -- Index in YYTABLE of the portion describing
@@ -514,20 +514,20 @@ static const yytype_int8 yypact[] =
 /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
-      -9,    26,    -9,    -9,    -9,    -9,    -9,    -5,    20,    -9,
-      21,     0,    -9
+      -9,    -9,    26,    -9,    -9,    -9,    -9,    -9,    -5,    20,
+      -9,    21,     0
 };
 
 /* YYTABLE[YYPACT[STATE-NUM]].  What to do in state STATE-NUM.  If
    positive, shift that token.  If negative, reduce the rule which
    number is the opposite.  If zero, do what YYDEFACT says.
    If YYTABLE_NINF, syntax error.  */
-#define YYTABLE_NINF -18
+#define YYTABLE_NINF -20
 static const yytype_int8 yytable[] =
 {
        1,    10,    12,    13,    14,     2,    16,    19,    24,    25,
        3,    27,    28,    36,    37,    45,    25,    22,    21,    23,
-      26,    35,    40,    29,    38,   -17,    34,    42,    28,    41,
+      26,    35,    40,    29,    38,   -19,    34,    42,    28,    41,
       46,    15,    39,     0,    44,    43,     0,     0,     0,     0,
        0,     0,     0,     0,    32,    33
 };
@@ -545,11 +545,11 @@ static const yytype_int8 yycheck[] =
    symbol of state STATE-NUM.  */
 static const yytype_uint8 yystos[] =
 {
-       0,     4,     9,    14,    18,    19,    20,    21,    22,    23,
-       9,    27,     5,     6,     0,    18,     7,    24,    25,    14,
-      28,    16,     9,     9,    10,    11,    13,    10,    11,    14,
-      29,    26,    27,    25,    14,     3,    10,    11,    10,    28,
-       9,    14,    11,    24,    15,    10,     8
+       0,     4,     9,    14,    19,    20,    21,    22,    23,    24,
+       9,    28,     5,     6,     0,    19,     7,    25,    26,    14,
+      29,    16,     9,     9,    10,    11,    13,    10,    11,    14,
+      18,    27,    28,    26,    14,     3,    10,    11,    10,    29,
+       9,    14,    11,    25,    15,    10,     8
 };
 
 #define yyerrok		(yyerrstatus = 0)
@@ -1363,26 +1363,42 @@ yyreduce:
   YY_REDUCE_PRINT (yyn);
   switch (yyn)
     {
-        case 8:
-#line 64 "grammar.y"
+        case 2:
+#line 46 "grammar.y"
+    {
+								(yyval.string_array)=(yyvsp[(1) - (3)].string_array);
+								insertArray(&(yyval.string_array), (yyvsp[(3) - (3)].string));
+							;}
+    break;
+
+  case 3:
+#line 51 "grammar.y"
+    {
+				initArray(&(yyval.string_array),0);
+				insertArray(&(yyval.string_array), (yyvsp[(1) - (1)].string));
+			;}
+    break;
+
+  case 10:
+#line 75 "grammar.y"
     {
 												printf("fluent(%s). ",(yyvsp[(1) - (5)].string));
 
 												for (int i=0; i<(yyvsp[(4) - (5)].string_array).used; i++) {
-													printf("possVal(%s, %s). ", (yyvsp[(1) - (5)].string), (yyvsp[(4) - (5)].string_array).array[i]);
+													printf("possVal(%s, %s). ", (yyvsp[(1) - (5)].string), (yyvsp[(4) - (5)].string_array).array[i] );
 												}
 
 												printf("\n");
 											;}
     break;
 
-  case 9:
-#line 76 "grammar.y"
+  case 11:
+#line 87 "grammar.y"
     { printf("performed(%s, %d).\n", (yyvsp[(1) - (3)].string), (yyvsp[(3) - (3)].int_val)); ;}
     break;
 
-  case 10:
-#line 81 "grammar.y"
+  case 12:
+#line 92 "grammar.y"
     {
 										insertArray(&(yyvsp[(2) - (8)].string_array), (yyvsp[(3) - (8)].string));
 
@@ -1425,8 +1441,8 @@ yyreduce:
 									;}
     break;
 
-  case 11:
-#line 124 "grammar.y"
+  case 13:
+#line 135 "grammar.y"
     {
 										for (int i=0; i<(yyvsp[(3) - (4)].pairs_array).used; i++) {
 
@@ -1441,57 +1457,57 @@ yyreduce:
 									;}
     break;
 
-  case 12:
-#line 139 "grammar.y"
+  case 14:
+#line 150 "grammar.y"
     { (yyval.pairs_array)=(yyvsp[(1) - (3)].pairs_array); insert2DArray(&(yyval.pairs_array), (yyvsp[(3) - (3)].string_array)); ;}
     break;
 
-  case 13:
-#line 141 "grammar.y"
+  case 15:
+#line 152 "grammar.y"
     { init2DArray(&(yyval.pairs_array),1); insert2DArray(&(yyval.pairs_array), (yyvsp[(1) - (1)].string_array)); ;}
     break;
 
-  case 14:
-#line 145 "grammar.y"
+  case 16:
+#line 156 "grammar.y"
     {
 														(yyval.string_array)=(yyvsp[(3) - (7)].string_array);
-														(yyval.string_array).probability = malloc(sizeof(char)*strlen((yyvsp[(6) - (7)].string)));
+														(yyval.string_array).probability = (char *)malloc(sizeof(char)*strlen((yyvsp[(6) - (7)].string)));
 														strcpy((yyval.string_array).probability,(yyvsp[(6) - (7)].string));
 													;}
     break;
 
-  case 15:
-#line 153 "grammar.y"
+  case 17:
+#line 164 "grammar.y"
     {
-					initArray(&(yyval.string_array),0);
-				;}
+								initArray(&(yyval.string_array),0);
+							;}
     break;
 
-  case 16:
-#line 157 "grammar.y"
+  case 18:
+#line 168 "grammar.y"
     {
 											(yyval.string_array)=(yyvsp[(1) - (2)].string_array);
 											insertArray(&(yyval.string_array), (yyvsp[(2) - (2)].string));
 										;}
     break;
 
-  case 17:
-#line 164 "grammar.y"
+  case 19:
+#line 175 "grammar.y"
     {
 					initArray(&(yyval.string_array),0);
 				;}
     break;
 
-  case 18:
-#line 168 "grammar.y"
+  case 20:
+#line 179 "grammar.y"
     {
 												(yyval.string_array)=(yyvsp[(1) - (3)].string_array);
 												insertArray( &(yyval.string_array), (yyvsp[(2) - (3)].string) );
 											;}
     break;
 
-  case 19:
-#line 175 "grammar.y"
+  case 21:
+#line 186 "grammar.y"
     {
 							(yyval.string) = (char *) malloc( sizeof(char) * (3+strlen((yyvsp[(1) - (3)].string))+strlen((yyvsp[(3) - (3)].string))) );
 							strcpy((yyval.string),"(");
@@ -1500,22 +1516,6 @@ yyreduce:
 							strcat((yyval.string),(yyvsp[(3) - (3)].string));
 							strcat((yyval.string),")");
 						;}
-    break;
-
-  case 20:
-#line 186 "grammar.y"
-    {
-								(yyval.string_array)=(yyvsp[(1) - (3)].string_array);
-								insertArray(&(yyval.string_array),(yyvsp[(3) - (3)].string));
-							;}
-    break;
-
-  case 21:
-#line 191 "grammar.y"
-    {
-				initArray(&(yyval.string_array),0);
-				insertArray(&(yyval.string_array),(yyvsp[(1) - (1)].string));
-			;}
     break;
 
 
@@ -1734,6 +1734,6 @@ yyreturn:
 }
 
 
-#line 198 "grammar.y"
+#line 196 "grammar.y"
 
 

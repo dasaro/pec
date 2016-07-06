@@ -3,14 +3,15 @@
 #include "dynamicarray.h"
 
 void initArray(Array *a, size_t initialSize) {
-  a->array = (char **)malloc(initialSize * sizeof(char *));
+  a->array = (char **) malloc (initialSize * sizeof(char *));
   a->used = 0;
   a->size = initialSize;
+  a->probability = NULL;
 }
 
 void insertArray(Array *a, char *element) {
   if (a->used == a->size) {
-    a->size *= 2;
+    a->size += 1;
     a->array = (char **)realloc(a->array, a->size * sizeof(char *));
   }
   a->array[a->used++] = element;

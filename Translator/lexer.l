@@ -26,21 +26,21 @@ performed-at		return PERFORMED;
 takes-values		return TAKESVALUES;
 [{}(),;=]			return *yytext;
 
-[0-9]+				{
-						yylval.int_val = atoi(yytext);
+[0-9]+			{
+							yylval.int_val = atoi(yytext);
 
-						if (maxinstant < yylval.int_val)
-						{
-							maxinstant = yylval.int_val;
+							if (maxinstant < yylval.int_val)
+							{
+								maxinstant = yylval.int_val;
+							}
+							return INSTANT;
 						}
-						return INSTANT;
-					}
 
 [a-z][a-zA-Z0-9]*	{
-						yylval.string=malloc(sizeof(char)*strlen(yytext));
-						strcpy(yylval.string,yytext);
+						yylval.string = malloc(sizeof(char)*strlen(yytext));
+						strcpy(yylval.string, yytext);
 						return OBJECT;
-					}
+}
 
 [0-9]+"/"[0-9]+			{
 							int i=0;
@@ -70,7 +70,9 @@ takes-values		return TAKESVALUES;
 
 void yyerror (char *string) { printf (" ERROR : %s.\n",string );}
 
-int yywrap (void) { }
+int yywrap (void) {
+	/* empty */
+}
 
 int main ( void ) {
 	yyparse();

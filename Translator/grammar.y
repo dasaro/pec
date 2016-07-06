@@ -35,14 +35,25 @@ extern int identifier;
 
 %type <pairs_array> list_pairs;
 %type <string_array> pair;
-
 %type <string_array> list_objects;
-
 %type <string_array> list_assignments;
 %type <string_array> loop_list_assignments;
 %type <string> assignment;
 
 %%
+
+list_objects:
+	list_objects ',' OBJECT {
+								$$=$1;
+								insertArray(&$$, $3);
+							}
+	|
+	OBJECT 	{
+				initArray(&$$,0);
+				insertArray(&$$, $1);
+			}
+
+;
 
 domain_description:
 	/* empty */
@@ -65,7 +76,7 @@ takesvalues:
 												printf("fluent(%s). ",$1);
 
 												for (int i=0; i<$4.used; i++) {
-													printf("possVal(%s, %s). ", $1, $4.array[i]);
+													printf("possVal(%s, %s). ", $1, $4.array[i] );
 												}
 
 												printf("\n");
@@ -144,15 +155,15 @@ list_pairs:
 pair:
 	'(' '{' list_assignments '}' ',' FRACTION ')' 	{
 														$$=$3;
-														$$.probability = malloc(sizeof(char)*strlen($6));
+														$$.probability = (char *)malloc(sizeof(char)*strlen($6));
 														strcpy($$.probability,$6);
 													}
 ;
 
 list_assignments:
 	/* empty */	{
-					initArray(&$$,0);
-				}
+								initArray(&$$,0);
+							}
 	|
 	loop_list_assignments assignment	{
 											$$=$1;
@@ -180,19 +191,6 @@ assignment:
 							strcat($$,$3);
 							strcat($$,")");
 						}
-;
-
-list_objects:
-	list_objects ',' OBJECT {
-								$$=$1;
-								insertArray(&$$,$3);
-							}
-	|
-	OBJECT 	{
-				initArray(&$$,0);
-				insertArray(&$$,$1);
-			}
-
 ;
 
 %%

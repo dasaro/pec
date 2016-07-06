@@ -1,8 +1,8 @@
 typedef struct {
   char **array;
-  char *probability;
   size_t used;
   size_t size;
+  char *probability;
 } Array;
 
 typedef struct {

@@ -2,7 +2,7 @@
 
 
 f takes-values {true, false}
-g takes-values {a,b,c}
+g takes-values {a,b,c,d,e,f,g,h}
 
 initially-one-of { ( {f=false,g=a},8/10 ), ( {f=true,g=c}, 2/10 ) }
 
