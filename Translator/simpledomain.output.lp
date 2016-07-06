@@ -1,5 +1,5 @@
-fluent(f). vals(f, true). vals(f, false). 
-fluent(g). vals(g, a). vals(g, b). vals(g, c). 
+fluent(f). vals(f, true). vals(f, false).
+fluent(g). vals(g, a). vals(g, b). vals(g, c).
 initiallyOneOf(id0, (f,false)).
 initiallyOneOf(id0, (g,a)).
 probabilityOf(id0, frac(8,10)).
