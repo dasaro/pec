@@ -8,7 +8,7 @@ void yyerror (char *);
 int yywrap (void);
 
 extern int identifier;
-%}     
+%}
 
 %start domain_description
 
@@ -63,11 +63,11 @@ statement:
 takesvalues:
 	OBJECT TAKESVALUES '{' list_objects '}' {
 												printf("fluent(%s). ",$1);
-												
+
 												for (int i=0; i<$4.used; i++) {
-													printf("vals(%s, %s). ", $1, $4.array[i]);
+													printf("possVal(%s, %s). ", $1, $4.array[i]);
 												}
-												
+
 												printf("\n");
 											}
 ;
@@ -80,15 +80,15 @@ causes:
 	'{' loop_list_assignments assignment '}' CAUSES '{' list_pairs '}'
 									{
 										insertArray(&$2, $3);
-										
+
 										for (int i=0; i<$7.used; i++) {
 											if ($7.array[i].used>0) {
-												// Standard case	
+												// Standard case
 												for (int j=0; j<$7.array[i].used; j++) {
-													printf("causesOneOf(id%d, (%s,I))",identifier,$7.array[i].array[j]);
-													
+													printf("causesOutcome(id%d, (%s,I))",identifier,$7.array[i].array[j]);
+
 													printf(":-\n");
-													
+
 													for (int k=0; k<$2.used; k++) {
 														printf("\tworld( (%s,I) )",$2.array[k]);
 														if (k<$2.used-1)
@@ -101,35 +101,35 @@ causes:
 											else
 											{
 												// Special case: persistence
-												printf("causesOneOf(id%d,((F,V),I))",identifier);
-												
+												printf("causesOutcome(id%d,((F,V),I))",identifier);
+
 												printf(":-\n");
-												
+
 												for (int k=0; k<$2.used; k++) {
 													printf("\tworld( (%s,I) ),\n",$2.array[k]);
 												}
-												
+
 												printf("\tworld( ((F,V),I) ).\n");
 											}
-											
+
 											printf("probabilityOf(id%d, %s).\n\n", identifier, $7.array[i].probability );
 
 											identifier++;
 										}
-																			
+
 									}
 ;
 
 initially:
 	INITIALLY '{' list_pairs '}'	{
 										for (int i=0; i<$3.used; i++) {
-										
+
 											for (int j=0; j<$3.array[i].used; j++) {
-												printf("initiallyOneOf(id%d, %s).\n",identifier,$3.array[i].array[j]);
+												printf("initialState(id%d, %s).\n",identifier,$3.array[i].array[j]);
 											}
-											
+
 											printf("probabilityOf(id%d, %s).\n\n", identifier,$3.array[i].probability);
-											
+
 											identifier++;
 										}
 									}
@@ -192,7 +192,7 @@ list_objects:
 				initArray(&$$,0);
 				insertArray(&$$,$1);
 			}
-			
+
 ;
 
 %%
