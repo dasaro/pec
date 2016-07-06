@@ -11,7 +11,15 @@ void initArray(Array *a, size_t initialSize) {
 
 void insertArray(Array *a, char *element) {
   if (a->used == a->size) {
-    a->size += 1;
+
+  	if (a->size!=0) {
+	    a->size *= 2;
+    }
+    else
+    {
+	    a->size = 1;
+    }
+
     a->array = (char **)realloc(a->array, a->size * sizeof(char *));
   }
   a->array[a->used++] = element;
