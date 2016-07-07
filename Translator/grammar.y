@@ -49,7 +49,7 @@ list_objects:
 							}
 	|
 	OBJECT 	{
-				initArray(&$$,0);
+				initArray(&$$,1);
 				insertArray(&$$, $1);
 			}
 

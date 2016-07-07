@@ -1887,7 +1887,7 @@ int yywrap (void) {
 int main ( void ) {
 	yyparse();
 
-	printf("\n#const maxinstant=%d.", maxinstant);
+	printf("\n#const maxinstant=%d.", maxinstant+1);
 
 	return 0;
 }

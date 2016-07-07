@@ -1374,7 +1374,7 @@ yyreduce:
   case 3:
 #line 51 "grammar.y"
     {
-				initArray(&(yyval.string_array),0);
+				initArray(&(yyval.string_array),1);
 				insertArray(&(yyval.string_array), (yyvsp[(1) - (1)].string));
 			;}
     break;
