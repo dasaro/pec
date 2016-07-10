@@ -93,39 +93,26 @@ causes:
 										insertArray(&$2, $3);
 
 										for (int i=0; i<$7.used; i++) {
-											if ($7.array[i].used>0) {
-												// Standard case
+
+												printf("partialstate(id%d).\n", identifier);
+
 												for (int j=0; j<$7.array[i].used; j++) {
-													printf("causesOutcome(id%d, (%s,I))",identifier,$7.array[i].array[j]);
-
-													printf(":-\n");
-
-													for (int k=0; k<$2.used; k++) {
-														printf("\tworld( (%s,I) )",$2.array[k]);
-														if (k<$2.used-1)
-															printf(",\n");
-														else
-															printf(".\n");
-													}
+													printf("belongsTo(%s, id%d).\n",$7.array[i].array[j],identifier);
 												}
-											}
-											else
-											{
-												// Special case: persistence
-												printf("causesOutcome(id%d,((F,V),I))",identifier);
 
-												printf(":-\n");
+												printf("causesOutcome(id%d, I) :-\n", identifier);
 
 												for (int k=0; k<$2.used; k++) {
-													printf("\tworld( (%s,I) ),\n",$2.array[k]);
+													printf("\tworld( (%s,I) )",$2.array[k]);
+													if (k<$2.used-1)
+														printf(",\n");
+													else
+														printf(".\n");
 												}
 
-												printf("\tworld( ((F,V),I) ).\n");
-											}
+										printf("probabilityOf(id%d, %s).\n\n", identifier, $7.array[i].probability );
 
-											printf("probabilityOf(id%d, %s).\n\n", identifier, $7.array[i].probability );
-
-											identifier++;
+										identifier++;
 										}
 
 									}
@@ -135,10 +122,13 @@ initially:
 	INITIALLY '{' list_pairs '}'	{
 										for (int i=0; i<$3.used; i++) {
 
+											printf("partialstate(id%d).\n", identifier);
+
 											for (int j=0; j<$3.array[i].used; j++) {
-												printf("initialState(id%d, %s).\n",identifier,$3.array[i].array[j]);
+												printf("belongsTo(%s, id%d).\n",$3.array[i].array[j], identifier);
 											}
 
+											printf("initialState(id%d).\n",identifier);
 											printf("probabilityOf(id%d, %s).\n\n", identifier,$3.array[i].probability);
 
 											identifier++;
