@@ -94,25 +94,21 @@ causes:
 
 										for (int i=0; i<$7.used; i++) {
 
-												printf("partialstate(id%d).\n", identifier);
-
 												for (int j=0; j<$7.array[i].used; j++) {
 													printf("belongsTo(%s, id%d).\n",$7.array[i].array[j],identifier);
 												}
 
-												printf("causesOutcome(id%d, I) :-\n", identifier);
+												printf("causesOutcome( (id%d, %s), I) :-\n", identifier, $7.array[i].probability);
 
 												for (int k=0; k<$2.used; k++) {
 													printf("\tworld( (%s,I) )",$2.array[k]);
 													if (k<$2.used-1)
 														printf(",\n");
 													else
-														printf(".\n");
+														printf(".\n\n");
 												}
 
-										printf("probabilityOf(id%d, %s).\n\n", identifier, $7.array[i].probability );
-
-										identifier++;
+												identifier++;
 										}
 
 									}
@@ -122,14 +118,11 @@ initially:
 	INITIALLY '{' list_pairs '}'	{
 										for (int i=0; i<$3.used; i++) {
 
-											printf("partialstate(id%d).\n", identifier);
-
 											for (int j=0; j<$3.array[i].used; j++) {
 												printf("belongsTo(%s, id%d).\n",$3.array[i].array[j], identifier);
 											}
 
-											printf("initialState(id%d).\n",identifier);
-											printf("probabilityOf(id%d, %s).\n\n", identifier,$3.array[i].probability);
+											printf("initialCondition( (id%d, %s) ).\n\n", identifier,$3.array[i].probability);
 
 											identifier++;
 										}

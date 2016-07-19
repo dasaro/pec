@@ -1,10 +1,5 @@
-fluent(f). possVal(f, true). possVal(f, false). 
-fluent(g). possVal(g, a). possVal(g, b). possVal(g, c). possVal(g, d). possVal(g, e). possVal(g, f). possVal(g, g). possVal(g, h). 
-partialstate(id0).
-belongsTo((f,false), id0).
-belongsTo((g,a), id0).
-initialState(id0).
-probabilityOf(id0, frac(8,10)).
+fluent(f). possVal(f, true). possVal(f, false).
+fluent(g). possVal(g, a). possVal(g, b). possVal(g, c).
 
 initialCondition(id1, frac(2,10)).
 belongsTo((f,true), id1).
@@ -13,7 +8,8 @@ belongsTo((g,c), id1).
 causesOutcome(id2,frac(1,10), I) :-
 	world( ((a,true),I) ),
 	world( ((f,false),I) ).
+
 belongsTo((f,true), id2).
 belongsTo((g,a), id2).
 
-etc....
+etc...

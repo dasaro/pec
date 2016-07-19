@@ -435,8 +435,8 @@ static const yytype_int8 yyrhs[] =
 static const yytype_uint8 yyrline[] =
 {
        0,    46,    46,    51,    58,    61,    65,    67,    69,    71,
-      75,    87,    91,   122,   140,   142,   146,   154,   158,   165,
-     169,   176
+      75,    87,    91,   118,   133,   135,   139,   147,   151,   158,
+     162,   169
 };
 #endif
 
@@ -1404,43 +1404,36 @@ yyreduce:
 
 										for (int i=0; i<(yyvsp[(7) - (8)].pairs_array).used; i++) {
 
-												printf("partialstate(id%d).\n", identifier);
-
 												for (int j=0; j<(yyvsp[(7) - (8)].pairs_array).array[i].used; j++) {
 													printf("belongsTo(%s, id%d).\n",(yyvsp[(7) - (8)].pairs_array).array[i].array[j],identifier);
 												}
 
-												printf("causesOutcome(id%d, I) :-\n", identifier);
+												printf("causesOutcome( (id%d, %s), I) :-\n", identifier, (yyvsp[(7) - (8)].pairs_array).array[i].probability);
 
 												for (int k=0; k<(yyvsp[(2) - (8)].string_array).used; k++) {
 													printf("\tworld( (%s,I) )",(yyvsp[(2) - (8)].string_array).array[k]);
 													if (k<(yyvsp[(2) - (8)].string_array).used-1)
 														printf(",\n");
 													else
-														printf(".\n");
+														printf(".\n\n");
 												}
 
-										printf("probabilityOf(id%d, %s).\n\n", identifier, (yyvsp[(7) - (8)].pairs_array).array[i].probability );
-
-										identifier++;
+												identifier++;
 										}
 
 									;}
     break;
 
   case 13:
-#line 122 "grammar.y"
+#line 118 "grammar.y"
     {
 										for (int i=0; i<(yyvsp[(3) - (4)].pairs_array).used; i++) {
-
-											printf("partialstate(id%d).\n", identifier);
 
 											for (int j=0; j<(yyvsp[(3) - (4)].pairs_array).array[i].used; j++) {
 												printf("belongsTo(%s, id%d).\n",(yyvsp[(3) - (4)].pairs_array).array[i].array[j], identifier);
 											}
 
-											printf("initialState(id%d).\n",identifier);
-											printf("probabilityOf(id%d, %s).\n\n", identifier,(yyvsp[(3) - (4)].pairs_array).array[i].probability);
+											printf("initialCondition( (id%d, %s) ).\n\n", identifier,(yyvsp[(3) - (4)].pairs_array).array[i].probability);
 
 											identifier++;
 										}
@@ -1448,17 +1441,17 @@ yyreduce:
     break;
 
   case 14:
-#line 140 "grammar.y"
+#line 133 "grammar.y"
     { (yyval.pairs_array)=(yyvsp[(1) - (3)].pairs_array); insert2DArray(&(yyval.pairs_array), (yyvsp[(3) - (3)].string_array)); ;}
     break;
 
   case 15:
-#line 142 "grammar.y"
+#line 135 "grammar.y"
     { init2DArray(&(yyval.pairs_array),1); insert2DArray(&(yyval.pairs_array), (yyvsp[(1) - (1)].string_array)); ;}
     break;
 
   case 16:
-#line 146 "grammar.y"
+#line 139 "grammar.y"
     {
 														(yyval.string_array)=(yyvsp[(3) - (7)].string_array);
 														(yyval.string_array).probability = (char *)malloc(sizeof(char)*strlen((yyvsp[(6) - (7)].string)));
@@ -1467,14 +1460,14 @@ yyreduce:
     break;
 
   case 17:
-#line 154 "grammar.y"
+#line 147 "grammar.y"
     {
 								initArray(&(yyval.string_array),0);
 							;}
     break;
 
   case 18:
-#line 158 "grammar.y"
+#line 151 "grammar.y"
     {
 											(yyval.string_array)=(yyvsp[(1) - (2)].string_array);
 											insertArray(&(yyval.string_array), (yyvsp[(2) - (2)].string));
@@ -1482,14 +1475,14 @@ yyreduce:
     break;
 
   case 19:
-#line 165 "grammar.y"
+#line 158 "grammar.y"
     {
 					initArray(&(yyval.string_array),0);
 				;}
     break;
 
   case 20:
-#line 169 "grammar.y"
+#line 162 "grammar.y"
     {
 												(yyval.string_array)=(yyvsp[(1) - (3)].string_array);
 												insertArray( &(yyval.string_array), (yyvsp[(2) - (3)].string) );
@@ -1497,7 +1490,7 @@ yyreduce:
     break;
 
   case 21:
-#line 176 "grammar.y"
+#line 169 "grammar.y"
     {
 							(yyval.string) = (char *) malloc( sizeof(char) * (3+strlen((yyvsp[(1) - (3)].string))+strlen((yyvsp[(3) - (3)].string))) );
 							strcpy((yyval.string),"(");
@@ -1510,7 +1503,7 @@ yyreduce:
 
 
 /* Line 1267 of yacc.c.  */
-#line 1514 "grammar.tab.c"
+#line 1507 "grammar.tab.c"
       default: break;
     }
   YY_SYMBOL_PRINT ("-> $$ =", yyr1[yyn], &yyval, &yyloc);
@@ -1724,6 +1717,6 @@ yyreturn:
 }
 
 
-#line 186 "grammar.y"
+#line 179 "grammar.y"
 
 
