@@ -1,6 +1,5 @@
 //First example
 
-
 f takes-values {true, false}
 g takes-values {a,b,c}
 

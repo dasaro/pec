@@ -820,23 +820,23 @@ case 9:
 YY_RULE_SETUP
 #line 29 "lexer.l"
 {
-						yylval.int_val = atoi(yytext);
+							yylval.int_val = atoi(yytext);
 
-						if (maxinstant < yylval.int_val)
-						{
-							maxinstant = yylval.int_val;
+							if (maxinstant < yylval.int_val)
+							{
+								maxinstant = yylval.int_val;
+							}
+							return INSTANT;
 						}
-						return INSTANT;
-					}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
 #line 39 "lexer.l"
 {
-						yylval.string=malloc(sizeof(char)*strlen(yytext));
-						strcpy(yylval.string,yytext);
+						yylval.string = malloc(sizeof(char)*strlen(yytext));
+						strcpy(yylval.string, yytext);
 						return OBJECT;
-					}
+}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
@@ -1880,12 +1880,14 @@ void yyfree (void * ptr )
 
 void yyerror (char *string) { printf (" ERROR : %s.\n",string );}
 
-int yywrap (void) { }
+int yywrap (void) {
+	/* empty */
+}
 
 int main ( void ) {
 	yyparse();
 
-	printf("\n#const maxinstant=%d.", maxinstant);
+	printf("\n#const maxinstant=%d.\n", maxinstant+1);
 
 	return 0;
 }
