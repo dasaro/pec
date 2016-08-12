@@ -1,1 +1,2 @@
-clingo -n 0 pec.lp translate_domain_description.lp
+clingo -n 0 pec.lp Examples/Antibiotic/antibiotic.pec.output Examples/Antibioti
+c/query.lp | ./evaluate.sh

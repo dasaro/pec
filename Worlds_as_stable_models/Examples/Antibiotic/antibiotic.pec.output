@@ -1,0 +1,46 @@
+fluent(bacteria). possVal(bacteria, present). possVal(bacteria, resistant). possVal(bacteria, absent).
+fluent(rash). possVal(rash, true). possVal(rash, false).
+belongsTo((bacteria,present), id0).
+belongsTo((rash,true), id0).
+initialCondition( (id0, frac(9,10)) ).
+
+belongsTo((bacteria,present), id1).
+belongsTo((rash,false), id1).
+initialCondition( (id1, frac(1,10)) ).
+
+belongsTo((bacteria,absent), id2).
+belongsTo((rash,false), id2).
+causesOutcome( (id2, frac(7,10)), I) :-
+	world( ((takesMedicine,true),I) ),
+	world( ((bacteria,present),I) ).
+
+belongsTo((bacteria,resistant), id3).
+belongsTo((rash,false), id3).
+causesOutcome( (id3, frac(2,10)), I) :-
+	world( ((takesMedicine,true),I) ),
+	world( ((bacteria,present),I) ).
+
+belongsTo((bacteria,resistant), id4).
+causesOutcome( (id4, frac(1,10)), I) :-
+	world( ((takesMedicine,true),I) ),
+	world( ((bacteria,present),I) ).
+
+belongsTo((bacteria,absent), id5).
+belongsTo((rash,false), id5).
+causesOutcome( (id5, frac(1,13)), I) :-
+	world( ((takesMedicine,true),I) ),
+	world( ((bacteria,resistant),I) ).
+
+belongsTo((rash,false), id6).
+causesOutcome( (id6, frac(8,13)), I) :-
+	world( ((takesMedicine,true),I) ),
+	world( ((bacteria,resistant),I) ).
+
+causesOutcome( (id7, frac(4,13)), I) :-
+	world( ((takesMedicine,true),I) ),
+	world( ((bacteria,resistant),I) ).
+
+performed(takesMedicine, 1).
+performed(takesMedicine, 3).
+
+#const maxinstant=4.
