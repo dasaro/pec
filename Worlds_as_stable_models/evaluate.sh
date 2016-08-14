@@ -1,7 +1,6 @@
 #!/bin/sh
 awk '
 BEGIN {
-				OFMT = "%.6f"
 				result=0
 			}
 
@@ -27,9 +26,9 @@ BEGIN {
 }
 
 END {
-	print "=============== RESULTS ==============="
-	print "P(query)\t N. Traces\t Time"
-	print "--------\t ---------\t ------"
-	print result,"\t",traces,"\t\t",time
+	print "============ RESULTS ============"
+	print "Time\t N. Traces\t P(query)"
+	print "------\t ---------\t --------"
+	print time,"\t",traces,"\t\t",result
 }
 '

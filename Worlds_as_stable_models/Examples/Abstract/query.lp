@@ -1,1 +1,2 @@
-world( ((f,false),4) ).
+world( ((f,false),2) ).
+world( ((g,a),0) ).
