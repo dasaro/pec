@@ -1,6 +1,10 @@
 #!/bin/sh
 awk '
-BEGIN { result=0 }
+BEGIN {
+				OFMT = "%.6f"
+				result=0
+			}
+
 {
 	for (i=1; i<=NF; i++) {
 		if ($i ~ "probability") {
@@ -13,7 +17,19 @@ BEGIN { result=0 }
 		}
 	}
 }
+
+/Models/ {
+	traces = $3
+}
+
+/Time/ {
+	time = $4
+}
+
 END {
-	print "P(query) = ", result
+	print "=============== RESULTS ==============="
+	print "P(query)\t N. Traces\t Time"
+	print "--------\t ---------\t ------"
+	print result,"\t",traces,"\t\t",time
 }
 '

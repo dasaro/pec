@@ -1,0 +1,40 @@
+fluent(f). possVal(f, true). possVal(f, false). 
+fluent(g). possVal(g, a). possVal(g, b). possVal(g, c). 
+belongsTo((f,false), id0).
+belongsTo((g,a), id0).
+initialCondition( (id0, frac(8,10)) ).
+
+belongsTo((f,true), id1).
+belongsTo((g,c), id1).
+initialCondition( (id1, frac(2,10)) ).
+
+belongsTo((f,true), id2).
+belongsTo((g,a), id2).
+causesOutcome( (id2, frac(1,10)), I) :-
+	world( ((a,true),I) ),
+	world( ((f,false),I) ).
+
+causesOutcome( (id3, frac(9,10)), I) :-
+	world( ((a,true),I) ),
+	world( ((f,false),I) ).
+
+belongsTo((f,false), id4).
+belongsTo((g,c), id4).
+causesOutcome( (id4, frac(1,10)), I) :-
+	world( ((a,true),I) ),
+	world( ((f,true),I) ).
+
+belongsTo((f,false), id5).
+causesOutcome( (id5, frac(85,100)), I) :-
+	world( ((a,true),I) ),
+	world( ((f,true),I) ).
+
+belongsTo((g,a), id6).
+causesOutcome( (id6, frac(5,100)), I) :-
+	world( ((a,true),I) ),
+	world( ((f,true),I) ).
+
+performed(a, 3).
+performed(a, 1).
+
+#const maxinstant=4.
