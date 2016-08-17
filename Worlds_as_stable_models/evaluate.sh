@@ -27,8 +27,8 @@ BEGIN {
 
 END {
 	print "============ RESULTS ============"
-	print "Time\t N. Traces\t P(query)"
-	print "------\t ---------\t --------"
-	print time,"\t",traces,"\t\t",result
+	print "Elapsed time:", time
+	print "N. Traces:", traces
+	print "P(query) =", result
 }
 '

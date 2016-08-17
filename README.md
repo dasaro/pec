@@ -1,4 +1,3 @@
-# pec
-Probabilistic Event Calculus
+# Probabilistic Event Calculus
 
 Execute run.sh to run PEC.
