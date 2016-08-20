@@ -27,7 +27,7 @@ iliteral((L, I)) :-
 % preconditions are satisfied by W at I
 occ(I) :-
 	instant(I),
-	causesOutcome(X, I).
+	causesOutcome(O, I).
 
 % Worlds are functions from instants to literals
 1{ world(IL) : iliteral(IL), IL=((X, V), I) }1 :-

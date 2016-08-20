@@ -37,32 +37,27 @@ takes-values		return TAKESVALUES;
 						}
 
 [a-z][a-zA-Z0-9]*	{
-						yylval.string = malloc(sizeof(char)*strlen(yytext));
-						strcpy(yylval.string, yytext);
+						yylval.string = strdup(yytext);
+
 						return OBJECT;
 }
 
 [0-9]+"/"[0-9]+			{
+							char *aux;
 							int i=0;
 
-							yylval.string=malloc((6+sizeof(char))*strlen(yytext));
-							strcpy(yylval.string, "frac(");
+							aux=malloc(sizeof(char)*(6+strlen(yytext)));
+							sprintf(aux, "frac(%s)", yytext);
 
-							while ( yytext[i] != '/' ) {
-								strncat(yylval.string, &yytext[i], 1);
+							while (aux[i] != '/')
 								i++;
-							}
 
-							strcat(yylval.string, ",");
-							i++;
+							aux[i] = ',';
 
+							yylval.string = strdup(aux);
+							
+							free(aux);
 
-							while ( i<strlen(yytext) ) {
-								strncat(yylval.string, &yytext[i], 1);
-								i++;
-							}
-
-							strcat(yylval.string, ")");
 							return FRACTION;
 						}
 [ \n\t\r]				;

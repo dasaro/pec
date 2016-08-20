@@ -1,5 +1,6 @@
 %{
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include "dynamicarray.h"
 
@@ -37,7 +38,7 @@ extern int identifier;
 %type <string_array> pair;
 %type <string_array> list_objects;
 %type <string_array> list_assignments;
-%type <string_array> loop_list_assignments;
+%type <string_array> nonempty_list_assignments;
 %type <string> assignment;
 
 %%
@@ -49,7 +50,7 @@ list_objects:
 							}
 	|
 	OBJECT 	{
-				initArray(&$$,1);
+				initArray(&$$,0);
 				insertArray(&$$, $1);
 			}
 
@@ -88,17 +89,16 @@ performed:
 ;
 
 causes:
-	'{' loop_list_assignments assignment '}' CAUSES '{' list_pairs '}'
+	'{' nonempty_list_assignments '}' CAUSES '{' list_pairs '}'
 									{
-										insertArray(&$2, $3);
 
-										for (int i=0; i<$7.used; i++) {
+										for (int i=0; i<$6.used; i++) {
 
-												for (int j=0; j<$7.array[i].used; j++) {
-													printf("belongsTo(%s, id%d).\n",$7.array[i].array[j],identifier);
+												for (int j=0; j<$6.array[i].used; j++) {
+													printf("belongsTo(%s, id%d).\n",$6.array[i].array[j],identifier);
 												}
 
-												printf("causesOutcome( (id%d, %s), I) :-\n", identifier, $7.array[i].probability);
+												printf("causesOutcome( (id%d, %s), I) :-\n", identifier, $6.array[i].probability);
 
 												for (int k=0; k<$2.used; k++) {
 													printf("\tworld( (%s,I) )",$2.array[k]);
@@ -130,16 +130,16 @@ initially:
 ;
 
 list_pairs:
-	list_pairs ',' pair { $$=$1; insert2DArray(&$$, $3); }
+	pair ',' list_pairs { $$=$3; insert2DArray(&$$, $1); }
 	|
-	pair { init2DArray(&$$,1); insert2DArray(&$$, $1); }
+	pair { init2DArray(&$$,0); insert2DArray(&$$, $1); }
 ;
 
 pair:
 	'(' '{' list_assignments '}' ',' FRACTION ')' 	{
 														$$=$3;
 														$$.probability = (char *)malloc(sizeof(char)*strlen($6));
-														strcpy($$.probability,$6);
+														$$.probability = strdup($6);
 													}
 ;
 
@@ -148,31 +148,30 @@ list_assignments:
 								initArray(&$$,0);
 							}
 	|
-	loop_list_assignments assignment	{
+	nonempty_list_assignments	{
 											$$=$1;
-											insertArray(&$$, $2);
 										}
 ;
 
-loop_list_assignments:
-	/* empty */	{
-					initArray(&$$,0);
-				}
+nonempty_list_assignments:
+	assignment	{
+								initArray(&$$,0);
+								insertArray(&$$, $1);
+							}
 	|
-	loop_list_assignments assignment ','	{
-												$$=$1;
-												insertArray( &$$, $2 );
+	assignment ',' nonempty_list_assignments {
+												$$=$3;
+												insertArray( &$$, $1 );
 											}
 ;
 
 assignment:
 	OBJECT '=' OBJECT	{
-							$$ = (char *) malloc( sizeof(char) * (3+strlen($1)+strlen($3)) );
-							strcpy($$,"(");
-							strcat($$,$1);
-							strcat($$,",");
-							strcat($$,$3);
-							strcat($$,")");
+							char *aux;
+							aux = (char *) malloc ( sizeof(char) * (strlen($1) + strlen($3) + 3) );
+							sprintf(aux, "(%s,%s)", $1, $3);
+							$$ = strdup(aux);
+							free(aux);
 						}
 ;
 

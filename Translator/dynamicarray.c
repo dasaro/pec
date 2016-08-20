@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 #include "dynamicarray.h"
 
 void initArray(Array *a, size_t initialSize) {
@@ -14,14 +15,16 @@ void insertArray(Array *a, char *element) {
 
   	if (a->size!=0) {
 	    a->size *= 2;
+      a->array = (char **)realloc(a->array, a->size * sizeof(char *));
     }
     else
     {
+      a->array = (char **)malloc( sizeof(char *) );
 	    a->size = 1;
     }
 
-    a->array = (char **)realloc(a->array, a->size * sizeof(char *));
   }
+
   a->array[a->used++] = element;
 }
 
@@ -39,9 +42,17 @@ void init2DArray(TwoDimensionalArray *a, size_t initialSize) {
 
 void insert2DArray(TwoDimensionalArray *a, Array element) {
   if (a->used == a->size) {
-    a->size *= 2;
-    a->array = (Array *)realloc(a->array, a->size * sizeof(Array));
+    if (a->size != 0) {
+      a->size *= 2;
+      a->array = (Array *)realloc(a->array, a->size * sizeof(Array));
+    }
+    else
+    {
+      a->array = (Array *) malloc(sizeof(Array));
+      a->size = 1;
+    }
   }
+
   a->array[a->used++] = element;
 }
 
