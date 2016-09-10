@@ -1,2 +1,1 @@
-world(((rash,invisible), 13 )).
-world(((bacteria,resistant), 13 )).
+world( ((bacteria,present), 0) ).

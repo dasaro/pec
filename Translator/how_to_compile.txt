@@ -2,7 +2,7 @@
 USING CYGWIN64 ON WIN
 ============================
 
-bison -d grammar.y; flex lexer.l; gcc dynamicarray.c lex.yy.c grammar.tab.c
+bison -d grammar.y; flex lexer.l; gcc dynamicarray.c lex.yy.c grammar.tab.c -o bin/translator
 
 ============================
 HOW TO RUN IT

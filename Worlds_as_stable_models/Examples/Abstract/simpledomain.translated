@@ -1,38 +1,38 @@
 fluent(f). possVal(f, true). possVal(f, false). 
 fluent(g). possVal(g, a). possVal(g, b). possVal(g, c). 
-belongsTo((f,false), id0).
-belongsTo((g,a), id0).
-initialCondition( (id0, frac(8,10)) ).
+belongsTo((g,c), id0).
+belongsTo((f,true), id0).
+initialCondition( (id0, frac(2,10)) ).
 
-belongsTo((f,true), id1).
-belongsTo((g,c), id1).
-initialCondition( (id1, frac(2,10)) ).
+belongsTo((g,a), id1).
+belongsTo((f,false), id1).
+initialCondition( (id1, frac(8,10)) ).
 
-belongsTo((f,true), id2).
-belongsTo((g,a), id2).
-causesOutcome( (id2, frac(1,10)), I) :-
-	world( ((a,true),I) ),
-	world( ((f,false),I) ).
+causesOutcome( (id2, frac(9,10)), I) :-
+	world( ((f,false),I) ),
+	world( ((a,true),I) ).
 
-causesOutcome( (id3, frac(9,10)), I) :-
-	world( ((a,true),I) ),
-	world( ((f,false),I) ).
+belongsTo((g,a), id3).
+belongsTo((f,true), id3).
+causesOutcome( (id3, frac(1,10)), I) :-
+	world( ((f,false),I) ),
+	world( ((a,true),I) ).
 
-belongsTo((f,false), id4).
-belongsTo((g,c), id4).
-causesOutcome( (id4, frac(1,10)), I) :-
-	world( ((a,true),I) ),
-	world( ((f,true),I) ).
+belongsTo((g,a), id4).
+causesOutcome( (id4, frac(5,100)), I) :-
+	world( ((f,true),I) ),
+	world( ((a,true),I) ).
 
 belongsTo((f,false), id5).
 causesOutcome( (id5, frac(85,100)), I) :-
-	world( ((a,true),I) ),
-	world( ((f,true),I) ).
+	world( ((f,true),I) ),
+	world( ((a,true),I) ).
 
-belongsTo((g,a), id6).
-causesOutcome( (id6, frac(5,100)), I) :-
-	world( ((a,true),I) ),
-	world( ((f,true),I) ).
+belongsTo((g,c), id6).
+belongsTo((f,false), id6).
+causesOutcome( (id6, frac(1,10)), I) :-
+	world( ((f,true),I) ),
+	world( ((a,true),I) ).
 
 performed(a, 3).
 performed(a, 1).

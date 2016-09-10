@@ -73,22 +73,22 @@ occ(I) :-
 
 
 % Calculating probabilities
-probabilityUpTo(0, P) :-
-	initialChoice( (S, P) ).
-
-probabilityUpTo(I+1, P) :-
-	I<maxinstant,
-	not occ(I),
-	probabilityUpTo(I, P).
-
-probabilityUpTo(I+1, frac(A*C, B*D)) :-
-	I<maxinstant,
-	occ(I),
-	probabilityUpTo(I, frac(A, B)),
-	effectChoice((X, frac(C, D)), I).
-
-probability(P) :-
-	probabilityUpTo(maxinstant, P).
+%probabilityUpTo(0, P) :-
+%	initialChoice( (S, P) ).
+%
+%probabilityUpTo(I+1, P) :-
+%	I<maxinstant,
+%	not occ(I),
+%	probabilityUpTo(I, P).
+%
+%probabilityUpTo(I+1, frac(A*C, B*D)) :-
+%	I<maxinstant,
+%	occ(I),
+%	probabilityUpTo(I, frac(A, B)),
+%	effectChoice((X, frac(C, D)), I).
+%
+%probability(P) :-
+%	probabilityUpTo(maxinstant, P).
 
 #show initialChoice/1.
 #show effectChoice/2.
