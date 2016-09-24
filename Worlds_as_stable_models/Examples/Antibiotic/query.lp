@@ -1,1 +1,2 @@
-world( ((bacteria,present), 0) ).
+world( ((bacteria,absent), 0) ).
+world( ((rash,absent), 4) ).

@@ -1,26 +1,26 @@
 // Antibiotic Example
 
 bacteria takes-values {present, resistant, absent}
-rash takes-values {visible, invisible}
+rash takes-values {present, absent}
 
 initially-one-of
 					{
-						( {bacteria=present, rash=visible}, 9/10 ),
-						( {bacteria=present, rash=invisible}, 1/10 )
+						( {bacteria=present, rash=present}, 9/10 ),
+						( {bacteria=absent, rash=present}, 1/10 )
 					}
 
 {takesMedicine=true, bacteria=present} causes-one-of
 					{
-						( {bacteria=absent, rash=invisible}, 7/10 ),
-						( {bacteria=resistant, rash=invisible}, 2/10 ),
-						( {bacteria=resistant}, 1/10 )
+						( {bacteria=absent, rash=absent}, 7/10 ),
+						( {bacteria=resistant, rash=absent}, 1/10 ),
+						( {bacteria=resistant}, 2/10 )
 					}
 
 {takesMedicine=true, bacteria=resistant} causes-one-of
 					{
-						( {bacteria=absent, rash=invisible}, 1/13 ),
-						( {rash=invisible}, 8/13 ),
-						( {}, 4/13 )
+						( {bacteria=absent, rash=absent}, 1/13 ),
+						( {}, 12/13 )
 					}
 
-takesMedicine performed-at 2
+takesMedicine performed-at 1
+takesMedicine performed-at 3
