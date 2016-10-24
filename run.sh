@@ -2,27 +2,12 @@
 
 #
 # INSTALLATION PATH:
-# If the variable DROPBOX_INSTALLATION_PATH is set, the script
-# will use that as installation path. Comment out the variable
-# to use OTHER_INSTALLATION_PATH as installation path.
-#
-
-# DROPBOX:
-# DROPBOX_INSTALLATION_PATH="$(python -c "import json;f=open('$HOME/.dropbox/info.json', 'r').read();data=json.loads(f);print data.get('personal', {}).get('path', '')")/FabioPhDsupervision/PEC_Paper/pec-implementation"
-
-# OTHER PATH:
-OTHER_INSTALLATION_PATH="/Users/fabiodasaro/Desktop/pec_implem"
-
-if [ -z $DROPBOX_INSTALLATION_PATH ]; then
-  INSTALLATION_PATH=$OTHER_INSTALLATION_PATH
-  echo "\nUSING INSTALLATION PATH: $INSTALLATION_PATH\n"
-else
-  INSTALLATION_PATH=$DROPBOX_INSTALLATION_PATH
-  echo "\nUSING DROPBOX INSTALL: $INSTALLATION_PATH\n"
-fi
+# It is set to the directory this script is located in
+INSTALLATION_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # BINARIES LOCATION
-# Use evaluation_script="Worlds_as_stable_models/evaluate2.sh";
+# Use evaluation_script="$INSTALLATION_PATH/Worlds_as_stable_models/evaluate_alt.sh";
+# and pec_domain_independent="$INSTALLATION_PATH/Worlds_as_stable_models/pec_alt.lp";
 # if the independent part of pec supports autonomous probability evaluation
 translator="$INSTALLATION_PATH/Translator/bin/translator";
 pec_domain_independent="$INSTALLATION_PATH/Worlds_as_stable_models/pec_alt.lp";
