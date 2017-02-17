@@ -36,7 +36,7 @@ If the installation path is not detected correctly, change the variable `INSTALL
 Here is an example execution:
 
 ``` sh
-Fabios-MacBook:GH_pec_implem fabiodasaro$ ./run.sh 
+$ ./run.sh 
 Locate PEC domain description: Examples/Antibiotic/antibiotic.pec 
 Locate query file (optional): Examples/Antibiotic/query.lp 
 ============= RESULTS =============
