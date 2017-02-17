@@ -14,6 +14,8 @@ The translator can be compiled by changing directory to the `Translator` directo
 bison -d grammar.y; flex lexer.l; gcc dynamicarray.c lex.yy.c grammar.tab.c -o bin/translator
 ```
 
+Provided binaries are for OSX.
+
 ## Running the translator
 
 If you want to run the translator alone, then use
