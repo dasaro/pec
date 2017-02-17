@@ -8,6 +8,7 @@
 extern YYSTYPE yylval;
 int identifier;
 int maxinstant=0;
+int line=0;
 
 int yyparse (void);
 %}
@@ -18,11 +19,11 @@ int yyparse (void);
 
 "//"				BEGIN(comment);
 <comment>[^\n]*		//Eats comments
-<comment>[\n]		BEGIN(INITIAL);
+<comment>[\n]		{ line++; BEGIN(INITIAL); }
 
-causes-one-of		return CAUSES;
-initially-one-of	return INITIALLY;
-performed-at		return PERFORMED;
+causes-one-of		return CAUSESONEOF;
+initially-one-of	return INITIALLYONEOF;
+performed-at		return PERFORMEDAT;
 takes-values		return TAKESVALUES;
 [{}(),;=]			return *yytext;
 
@@ -55,15 +56,16 @@ takes-values		return TAKESVALUES;
 							aux[i] = ',';
 
 							yylval.string = strdup(aux);
-							
+
 							free(aux);
 
 							return FRACTION;
 						}
-[ \n\t\r]				;
+[ \t\r]			;
+\n 					line++;
 %%
 
-void yyerror (char *string) { printf (" ERROR : %s.\n",string );}
+void yyerror (char *string) { printf("LEXER ERROR ON LINE %d: %s.\n",line,string ); }
 
 int yywrap (void) {
 	/* empty */

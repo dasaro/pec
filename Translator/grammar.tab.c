@@ -110,9 +110,9 @@ extern int yydebug;
 # define YYTOKENTYPE
   enum yytokentype
   {
-    CAUSES = 258,
-    INITIALLY = 259,
-    PERFORMED = 260,
+    CAUSESONEOF = 258,
+    INITIALLYONEOF = 259,
+    PERFORMEDAT = 260,
     TAKESVALUES = 261,
     OBJECT = 262,
     FRACTION = 263,
@@ -459,12 +459,12 @@ static const yytype_uint8 yyrline[] =
    First, the terminals, then, starting at YYNTOKENS, nonterminals.  */
 static const char *const yytname[] =
 {
-  "$end", "error", "$undefined", "CAUSES", "INITIALLY", "PERFORMED",
-  "TAKESVALUES", "'('", "')'", "'{'", "'}'", "','", "';'", "'='", "OBJECT",
-  "FRACTION", "INSTANT", "$accept", "list_objects", "domain_description",
-  "statement", "takesvalues", "performed", "causes", "initially",
-  "list_pairs", "pair", "list_assignments", "nonempty_list_assignments",
-  "assignment", YY_NULLPTR
+  "$end", "error", "$undefined", "CAUSESONEOF", "INITIALLYONEOF",
+  "PERFORMEDAT", "TAKESVALUES", "'('", "')'", "'{'", "'}'", "','", "';'",
+  "'='", "OBJECT", "FRACTION", "INSTANT", "$accept", "list_objects",
+  "domain_description", "statement", "takesvalues", "performed", "causes",
+  "initially", "list_pairs", "pair", "list_assignments",
+  "nonempty_list_assignments", "assignment", YY_NULLPTR
 };
 #endif
 
@@ -1292,10 +1292,10 @@ yyreduce:
 													printf("belongsTo(%s, id%d).\n",(yyvsp[-1].pairs_array).array[i].array[j],identifier);
 												}
 
-												printf("causesOutcome( (id%d, %s), I) :-\n", identifier, (yyvsp[-1].pairs_array).array[i].probability);
+												printf("causedOutcome( (id%d, %s), I) :-\n", identifier, (yyvsp[-1].pairs_array).array[i].probability);
 
 												for (int k=0; k<(yyvsp[-5].string_array).used; k++) {
-													printf("\tworld( (%s,I) )",(yyvsp[-5].string_array).array[k]);
+													printf("\tholdsAt( (%s,I) )",(yyvsp[-5].string_array).array[k]);
 													if (k<(yyvsp[-5].string_array).used-1)
 														printf(",\n");
 													else

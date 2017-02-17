@@ -45,9 +45,9 @@ extern int yydebug;
 # define YYTOKENTYPE
   enum yytokentype
   {
-    CAUSES = 258,
-    INITIALLY = 259,
-    PERFORMED = 260,
+    CAUSESONEOF = 258,
+    INITIALLYONEOF = 259,
+    PERFORMEDAT = 260,
     TAKESVALUES = 261,
     OBJECT = 262,
     FRACTION = 263,

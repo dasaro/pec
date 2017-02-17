@@ -13,9 +13,9 @@ extern int identifier;
 
 %start domain_description
 
-%token CAUSES
-%token INITIALLY
-%token PERFORMED
+%token CAUSESONEOF
+%token INITIALLYONEOF
+%token PERFORMEDAT
 %token TAKESVALUES
 %token '(' ')'
 %token '{' '}'
@@ -85,11 +85,11 @@ takesvalues:
 ;
 
 performed:
-	OBJECT PERFORMED INSTANT { printf("performed(%s, %d).\n", $1, $3); }
+	OBJECT PERFORMEDAT INSTANT { printf("performed(%s, %d).\n", $1, $3); }
 ;
 
 causes:
-	'{' nonempty_list_assignments '}' CAUSES '{' list_pairs '}'
+	'{' nonempty_list_assignments '}' CAUSESONEOF '{' list_pairs '}'
 									{
 
 										for (int i=0; i<$6.used; i++) {
@@ -98,10 +98,10 @@ causes:
 													printf("belongsTo(%s, id%d).\n",$6.array[i].array[j],identifier);
 												}
 
-												printf("causesOutcome( (id%d, %s), I) :-\n", identifier, $6.array[i].probability);
+												printf("causedOutcome( (id%d, %s), I) :-\n", identifier, $6.array[i].probability);
 
 												for (int k=0; k<$2.used; k++) {
-													printf("\tworld( (%s,I) )",$2.array[k]);
+													printf("\tholdsAt( (%s,I) )",$2.array[k]);
 													if (k<$2.used-1)
 														printf(",\n");
 													else
@@ -115,7 +115,7 @@ causes:
 ;
 
 initially:
-	INITIALLY '{' list_pairs '}'	{
+	INITIALLYONEOF '{' list_pairs '}'	{
 										for (int i=0; i<$3.used; i++) {
 
 											for (int j=0; j<$3.array[i].used; j++) {
