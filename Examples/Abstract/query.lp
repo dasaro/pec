@@ -1,2 +1,2 @@
-world( ((f,false),2) ).
-world( ((g,a),0) ).
+holdsAt( ((f,false),2) ).
+holdsAt( ((g,a),0) ).

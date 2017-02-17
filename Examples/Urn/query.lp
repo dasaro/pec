@@ -1,1 +1,1 @@
-world( ((redsInBag,zero),10) ).
+holdsAt( ((redsInBag,zero),10) ).

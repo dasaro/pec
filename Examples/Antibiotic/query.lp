@@ -1,2 +1,2 @@
-world( ((bacteria,absent), 0) ).
-world( ((rash,absent), 4) ).
+holdsAt( ((bacteria,resistant), 4) ).
+holdsAt( ((rash,absent), 4) ).
