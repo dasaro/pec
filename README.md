@@ -22,7 +22,7 @@ If you want to run the translator alone, then use
 ``` sh
 ./Translator/bin/translator < inputDomain.pec > output.lp
 ```
-from `$INSTALLATION_PATH`, where `translatedDomain.lp` is the file you want to translate, and `translatedDomain.lp` is the output file.
+from the installation path, where `inputDomain.pec` is the file you want to translate, and `output.lp` is the output file.
 
 ## Running PEC-ASP
 
@@ -33,17 +33,17 @@ Make sure that you have [Clingo](http://potassco.sourceforge.net) correctly inst
 
 If the installation path is not detected correctly, change the variable `INSTALLATION_PATH` in `run.sh` to match the directory where PEC is installed to.
 
-## Example
+## Execution Example
 
-Here is an example execution:
+The following is an execution example:
 
 ``` sh
-$ ./run.sh 
-Locate PEC domain description: Examples/Antibiotic/antibiotic.pec 
-Locate query file (optional): Examples/Antibiotic/query.lp 
+$ ./run.sh
+Locate PEC domain description: Examples/Antibiotic/antibiotic.pec
+Locate query file (optional): Examples/Antibiotic/query.lp
 ============= RESULTS =============
 N. Traces: 1
-P(query) = 0.0830769 
+P(query) = 0.0830769
 
 ============= EL.TIME =============
 ASP Time: 0.000s
