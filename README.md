@@ -4,6 +4,8 @@ The Probabilistic Event Calculus (PEC) is a probabilistic extension of a popular
 
 This repository hosts an [ASP](https://en.wikipedia.org/wiki/Answer_set_programming) Implementation of PEC able to perform temporal projection.
 
+You can find more details about PEC in the associated [technical report](http://ucl.ac.uk/infostudies/fabio-dasaro/pec/techreport.pdf), which contains a formal description of the syntax used by this implementation as well as example domain descriptions.
+
 # How to compile and run
 
 To compile the translator, you will need the two tools [flex](https://github.com/westes/flex) and [Bison](https://www.gnu.org/software/bison/), together with [gcc](https://gcc.gnu.org).
