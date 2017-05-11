@@ -1,4 +1,4 @@
-# PEC-ASP v0.1
+# PEC-ASP
 
 The Probabilistic Event Calculus (PEC) is a probabilistic extension of a popular framework for reasoning about the effects of a narrative of action occurrences (events) along a time line known as the [Event Calculus](https://en.wikipedia.org/wiki/Event_calculus) (EC).
 
