@@ -10,8 +10,8 @@ INSTALLATION_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 # and pec_domain_independent="$INSTALLATION_PATH/Traces_as_stable_models/pec_alt.lp";
 # if the independent part of pec supports autonomous probability evaluation
 translator="$INSTALLATION_PATH/Translator/bin/translator";
-pec_domain_independent="$INSTALLATION_PATH/Traces_as_stable_models/pec_alt.lp";
-evaluation_script="$INSTALLATION_PATH/Traces_as_stable_models/evaluate_alt.sh";
+pec_domain_independent="$INSTALLATION_PATH/Reasoner/pec.lp";
+evaluation_script="$INSTALLATION_PATH/Reasoner/evaluate.sh";
 
 #
 # RUN PEC

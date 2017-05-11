@@ -8,5 +8,5 @@ initially-one-of { ( {f=false,g=a},8/10 ), ( {f=true,g=c}, 2/10 ) }
 {a=true, f=false} causes-one-of { ({f=true, g=a}, 1/10), ({}, 9/10) }
 {a=true, f=true} causes-one-of { ({f=false, g=c}, 1/10), ({f=false}, 85/100), ({g=a},5/100) }
 
+a performed-at 1 with-prob 2/3
 a performed-at 3
-a performed-at 1

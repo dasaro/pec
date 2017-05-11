@@ -1,1 +1,1 @@
-holdsAt( ((redsInBag,zero),10) ).
+holds( ((redsInBag,zero),10) ).

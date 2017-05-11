@@ -1,2 +1,2 @@
-holdsAt( ((bacteria,resistant), 4) ).
-holdsAt( ((rash,absent), 4) ).
+holds( ((bacteria,resistant), 4) ).
+holds( ((rash,absent), 4) ).

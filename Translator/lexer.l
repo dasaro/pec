@@ -25,6 +25,7 @@ causes-one-of		return CAUSESONEOF;
 initially-one-of	return INITIALLYONEOF;
 performed-at		return PERFORMEDAT;
 takes-values		return TAKESVALUES;
+with-prob			return WITHPROB;
 [{}(),;=]			return *yytext;
 
 [0-9]+			{
@@ -61,6 +62,7 @@ takes-values		return TAKESVALUES;
 
 							return FRACTION;
 						}
+
 [ \t\r]			;
 \n 					line++;
 %%

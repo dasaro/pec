@@ -1,5 +1,5 @@
 #!/bin/sh
-SECONDS=0;
+
 awk '
 BEGIN {
 				result=0
@@ -7,9 +7,10 @@ BEGIN {
 
 /Choice/ {
 	trace_prob = 1;
+	narr_prob = 1;
 
 	for (i=1; i<=NF; i++) {
-		if ($i ~ "Choice") {
+		if ($i ~ /Choice\(/) {
 			split( $i, z, "[(),]")
 
 			num = z[5];
@@ -17,8 +18,18 @@ BEGIN {
 
 			trace_prob = trace_prob * num/den
 		}
+
+		if ($i ~ /eval\(/) {
+			split( $i, z, "[(),]")
+
+			num = z[5];
+			den = z[6];
+
+			narr_prob = narr_prob * num/den
+		}
+
 	}
-	result = result + trace_prob
+	result = result + (trace_prob * (narr_prob))
 }
 
 
@@ -38,6 +49,3 @@ END {
 	print "ASP Time:", asptime
 }
 ';
-
-duration=$SECONDS
-echo "Total Time: $(($duration / 60))m$(($duration % 60))s"

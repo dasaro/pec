@@ -2,7 +2,7 @@ instant(0..maxinstant).
 
 action(A) :-
 	instant(I),
-	performed(A, I).
+	possiblyPerformed(A, I).
 
 possVal(X, true) :- boolean(X).
 possVal(X, false) :- boolean(X).
@@ -30,7 +30,7 @@ inOcc(I) :-
 	causedOutcome(O, I).
 
 % Worlds are functions from instants to literals
-1{ holdsAt(((X, V), I)) : iliteral(((X, V), I)) }1 :-
+1{ holds(((X, V), I)) : iliteral(((X, V), I)) }1 :-
 	fluentOrAction(X),
 	instant(I).
 
@@ -42,53 +42,46 @@ inOcc(I) :-
 1{ effectChoice(O, I) : causedOutcome(O, I) }1 :-
 	inOcc(I).
 
-% CWA
-:- action(A), instant(I), holdsAt( ((A, true),I) ), not performed(A,I).
-:- action(A), instant(I), holdsAt( ((A, false),I) ), performed(A,I).
+% Auxiliary predicates for CWA
+possiblyPerformed(A,I) :-
+	performed(A,I,frac(X,Y)).
+definitelyPerformed(A,I) :-
+		performed(A,I,frac(X,X)),
+		X>0.
+
+% Closed World Assumption
+:- action(A), instant(I), holds( ((A, false),I) ), definitelyPerformed(A,I).
+:- action(A), instant(I), holds( ((A, true),I) ), not possiblyPerformed(A,I).
 
 % Persistence
-:- initialChoice((S, P)), literal(L), belongsTo(L, S), not holdsAt((L, 0)).
+:- initialChoice((S, P)), literal(L), belongsTo(L, S), not holds((L, 0)).
 
-:-	not holdsAt( ((F, V), I+1) ),
+:-	not holds( ((F, V), I+1) ),
 		instant(I),
 		I<maxinstant,
 		fluent(F),
 		effectChoice( (X, P), I),
 		belongsTo( (F, V), X ).
 
-:-	holdsAt( ((F, V), I+1) ),
+:-	holds( ((F, V), I+1) ),
 		instant(I),
 		I<maxinstant,
 		fluent(F),
 		effectChoice( (X, P), I),
 		not belongsTo( (F, V), X ),
-		not holdsAt( ((F, V),I) ).
+		not holds( ((F, V),I) ).
 
 :-	instant(I),
 		I<maxinstant,
 		fluent(F),
 		not inOcc(I),
-		holdsAt( ((F, V), I) ),
-		not holdsAt( ((F, V), I+1) ).
+		holds( ((F, V), I) ),
+		not holds( ((F, V), I+1) ).
 
-
-% Calculating probabilities
-probabilityUpTo(0, P) :-
-	initialChoice( (S, P) ).
-
-probabilityUpTo(I+1, P) :-
-	I<maxinstant,
-	not inOcc(I),
-	probabilityUpTo(I, P).
-
-probabilityUpTo(I+1, frac(A*C, B*D)) :-
-	I<maxinstant,
-	inOcc(I),
-	probabilityUpTo(I, frac(A, B)),
-	effectChoice((X, frac(C, D)), I).
-
-probability(P) :-
-	probabilityUpTo(maxinstant, P).
+% Evaluation of narrative
+eval(A,I,P) :- action(A), instant(I), performed(A,I,P), holds( ((A,true),I) ).
+eval(A,I,frac(X2,Y)) :- action(A), instant(I), performed(A,I,frac(X1,Y)), holds( ((A,false),I) ), X2 = Y - X1.
 
 #show initialChoice/1.
 #show effectChoice/2.
+#show eval/3.

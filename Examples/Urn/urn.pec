@@ -76,8 +76,8 @@ initially-one-of { ( {bluesInBag=two, redsInBag=three, lastBallTaken=none}, 1/1 
          ( {bluesInBag=zero, redsInBag=zero, lastBallTaken=red}, 1/1 )
        }
 
-takeBall performed-at 1
+takeBall performed-at 1 with-prob 2/3
 takeBall performed-at 2
-takeBall performed-at 5
+takeBall performed-at 5 with-prob 4/5
 takeBall performed-at 9
-takeBall performed-at 10
+takeBall performed-at 10 with-prob 7/9

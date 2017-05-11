@@ -1,2 +1,2 @@
-holdsAt( ((f,false),2) ).
-holdsAt( ((g,a),0) ).
+holds( ((f,false),2) ).
+holds( ((g,a),0) ).

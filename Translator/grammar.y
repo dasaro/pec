@@ -17,6 +17,7 @@ extern int identifier;
 %token INITIALLYONEOF
 %token PERFORMEDAT
 %token TAKESVALUES
+%token WITHPROB
 %token '(' ')'
 %token '{' '}'
 %token ',' ';'
@@ -85,7 +86,19 @@ takesvalues:
 ;
 
 performed:
-	OBJECT PERFORMEDAT INSTANT { printf("performed(%s, %d).\n", $1, $3); }
+	performed_first_form | performed_second_form | performed_shorthand
+;
+
+performed_first_form:
+	OBJECT PERFORMEDAT INSTANT WITHPROB FRACTION { printf("performed(%s, %d, %s).\n", $1, $3, $5); }
+;
+
+performed_second_form:
+	OBJECT PERFORMEDAT INSTANT WITHPROB INSTANT { printf("performed(%s, %d, frac(1,1)).\n", $1, $3); }
+;
+
+performed_shorthand:
+	OBJECT PERFORMEDAT INSTANT { printf("performed(%s, %d, frac(1,1)).\n", $1, $3); }
 ;
 
 causes:
@@ -101,7 +114,7 @@ causes:
 												printf("causedOutcome( (id%d, %s), I) :-\n", identifier, $6.array[i].probability);
 
 												for (int k=0; k<$2.used; k++) {
-													printf("\tholdsAt( (%s,I) )",$2.array[k]);
+													printf("\tholds( (%s,I) )",$2.array[k]);
 													if (k<$2.used-1)
 														printf(",\n");
 													else
