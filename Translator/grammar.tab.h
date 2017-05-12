@@ -52,7 +52,7 @@ extern int yydebug;
     WITHPROB = 262,
     OBJECT = 263,
     FRACTION = 264,
-    INSTANT = 265
+    INTEGER = 265
   };
 #endif
 
@@ -61,7 +61,7 @@ extern int yydebug;
 
 union YYSTYPE
 {
-#line 30 "grammar.y" /* yacc.c:1909  */
+#line 31 "grammar.y" /* yacc.c:1909  */
 
 	TwoDimensionalArray pairs_array;
 	Array string_array;

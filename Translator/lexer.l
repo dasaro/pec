@@ -7,7 +7,7 @@
 
 extern YYSTYPE yylval;
 int identifier;
-int maxinstant=0;
+int maxinstant=1;
 int line=0;
 
 int yyparse (void);
@@ -26,7 +26,7 @@ initially-one-of	return INITIALLYONEOF;
 performed-at		return PERFORMEDAT;
 takes-values		return TAKESVALUES;
 with-prob			return WITHPROB;
-[{}(),;=]			return *yytext;
+[1{}(),;=]			return *yytext;
 
 [0-9]+			{
 							yylval.int_val = atoi(yytext);
@@ -35,7 +35,7 @@ with-prob			return WITHPROB;
 							{
 								maxinstant = yylval.int_val;
 							}
-							return INSTANT;
+							return INTEGER;
 						}
 
 [a-z][a-zA-Z0-9]*	{

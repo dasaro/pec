@@ -44,18 +44,21 @@ inOcc(I) :-
 
 % Auxiliary predicates for CWA
 possiblyPerformed(A,I) :-
-	performed(A,I,frac(X,Y)).
+	performed(A,I, frac(X,Y)),
+	X <= Y.
+
 definitelyPerformed(A,I) :-
-		performed(A,I,frac(X,X)),
+		performed(A,I, frac(X,X)),
 		X>0.
 
 % Closed World Assumption
 :- action(A), instant(I), holds( ((A, false),I) ), definitelyPerformed(A,I).
 :- action(A), instant(I), holds( ((A, true),I) ), not possiblyPerformed(A,I).
 
-% Persistence
+% Initial Condition
 :- initialChoice((S, P)), literal(L), belongsTo(L, S), not holds((L, 0)).
 
+% Justified Change
 :-	not holds( ((F, V), I+1) ),
 		instant(I),
 		I<maxinstant,
@@ -63,6 +66,7 @@ definitelyPerformed(A,I) :-
 		effectChoice( (X, P), I),
 		belongsTo( (F, V), X ).
 
+% Minimal Change
 :-	holds( ((F, V), I+1) ),
 		instant(I),
 		I<maxinstant,
@@ -71,6 +75,7 @@ definitelyPerformed(A,I) :-
 		not belongsTo( (F, V), X ),
 		not holds( ((F, V),I) ).
 
+% Persistence
 :-	instant(I),
 		I<maxinstant,
 		fluent(F),

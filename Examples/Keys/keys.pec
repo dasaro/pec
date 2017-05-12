@@ -1,0 +1,20 @@
+// Keys Domain Description
+
+hasKeys takes-values {true, false}
+lockedOut takes-values {true, false}
+location takes-values {inside, outside}
+
+initially-one-of
+		{ ( {hasKeys=false, lockedOut=false, location=inside}, 1 ) }
+
+{pickupKeys=true, location=inside} causes-one-of
+		{ ( {hasKeys=true}, 1 ) }
+
+{goOut=true, hasKeys=false} causes-one-of
+		{ ( {location=outside, lockedOut=true}, 1 ) }
+
+{goOut=true, hasKeys=true} causes-one-of
+		{ ( {location=outside}, 1 ) }
+
+pickupKeys performed-at 1 with-prob 99/100
+goOut performed-at 2

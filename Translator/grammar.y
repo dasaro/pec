@@ -22,10 +22,11 @@ extern int identifier;
 %token '{' '}'
 %token ',' ';'
 %token '='
+%token '1'
 
 %token <string> OBJECT
 %token <string> FRACTION
-%token <int_val> INSTANT
+%token <int_val> INTEGER
 
 %union {
 	TwoDimensionalArray pairs_array;
@@ -35,6 +36,8 @@ extern int identifier;
 	char *string;
 };
 
+%type <int_val> instant
+%type <string> prob
 %type <pairs_array> list_pairs;
 %type <string_array> pair;
 %type <string_array> list_objects;
@@ -43,6 +46,24 @@ extern int identifier;
 %type <string> assignment;
 
 %%
+
+instant:
+	'1' { $$ = 1; }
+	|
+	INTEGER { $$ = $1; }
+;
+
+prob:
+	'1' {
+		$$ = (char *)malloc(9*sizeof(char));
+		sprintf($$, "frac(1,1)");
+	}
+	|
+	FRACTION {
+		$$ = (char *)malloc(sizeof(char)*strlen($1));
+		$$ = strdup($1);
+	}
+;
 
 list_objects:
 	list_objects ',' OBJECT {
@@ -53,7 +74,7 @@ list_objects:
 	OBJECT 	{
 				initArray(&$$,0);
 				insertArray(&$$, $1);
-			}
+	}
 
 ;
 
@@ -86,19 +107,15 @@ takesvalues:
 ;
 
 performed:
-	performed_first_form | performed_second_form | performed_shorthand
+	performed_full_form | performed_shorthand
 ;
 
-performed_first_form:
-	OBJECT PERFORMEDAT INSTANT WITHPROB FRACTION { printf("performed(%s, %d, %s).\n", $1, $3, $5); }
-;
-
-performed_second_form:
-	OBJECT PERFORMEDAT INSTANT WITHPROB INSTANT { printf("performed(%s, %d, frac(1,1)).\n", $1, $3); }
+performed_full_form:
+	OBJECT PERFORMEDAT instant WITHPROB prob { printf("performed(%s, %d, %s).\n", $1, $3, $5); }
 ;
 
 performed_shorthand:
-	OBJECT PERFORMEDAT INSTANT { printf("performed(%s, %d, frac(1,1)).\n", $1, $3); }
+	OBJECT PERFORMEDAT instant { printf("performed(%s, %d, frac(1,1)).\n", $1, $3); }
 ;
 
 causes:
@@ -149,10 +166,9 @@ list_pairs:
 ;
 
 pair:
-	'(' '{' list_assignments '}' ',' FRACTION ')' 	{
+	'(' '{' list_assignments '}' ',' prob ')' 	{
 														$$=$3;
-														$$.probability = (char *)malloc(sizeof(char)*strlen($6));
-														$$.probability = strdup($6);
+														$$.probability = $6;
 													}
 ;
 

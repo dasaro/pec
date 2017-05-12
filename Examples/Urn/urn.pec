@@ -2,7 +2,7 @@ bluesInBag takes-values {zero, one, two}
 redsInBag takes-values {zero, one, two, three}
 lastBallTaken takes-values {red, blue, none}
 
-initially-one-of { ( {bluesInBag=two, redsInBag=three, lastBallTaken=none}, 1/1 ) }
+initially-one-of { ( {bluesInBag=two, redsInBag=three, lastBallTaken=none}, 1 ) }
 
 { bluesInBag=two, redsInBag=three, takeBall=true }
     causes-one-of
@@ -28,7 +28,7 @@ initially-one-of { ( {bluesInBag=two, redsInBag=three, lastBallTaken=none}, 1/1 
 { bluesInBag=two, redsInBag=zero, takeBall=true }
     causes-one-of
         {
-          ( {bluesInBag=one, redsInBag=zero, lastBallTaken=blue}, 1/1 )
+          ( {bluesInBag=one, redsInBag=zero, lastBallTaken=blue}, 1 )
         }
 
 { bluesInBag=one, redsInBag=three, takeBall=true }
@@ -55,29 +55,29 @@ initially-one-of { ( {bluesInBag=two, redsInBag=three, lastBallTaken=none}, 1/1 
 { bluesInBag=one, redsInBag=zero, takeBall=true }
     causes-one-of
         {
-          ( {bluesInBag=zero, redsInBag=zero, lastBallTaken=blue}, 1/1 )
+          ( {bluesInBag=zero, redsInBag=zero, lastBallTaken=blue}, 1 )
         }
 
 { bluesInBag=zero, redsInBag=three, takeBall=true }
     causes-one-of
         {
-          ( {bluesInBag=zero, redsInBag=two, lastBallTaken=red}, 1/1 )
+          ( {bluesInBag=zero, redsInBag=two, lastBallTaken=red}, 1 )
          }
 
 { bluesInBag=zero, redsInBag=two, takeBall=true }
    causes-one-of
        {
-         ( {bluesInBag=zero, redsInBag=one, lastBallTaken=red}, 1/1 )
+         ( {bluesInBag=zero, redsInBag=one, lastBallTaken=red}, 1 )
        }
 
 { bluesInBag=zero, redsInBag=one, takeBall=true }
    causes-one-of
        {
-         ( {bluesInBag=zero, redsInBag=zero, lastBallTaken=red}, 1/1 )
+         ( {bluesInBag=zero, redsInBag=zero, lastBallTaken=red}, 1 )
        }
 
 takeBall performed-at 1 with-prob 2/3
-takeBall performed-at 2
+takeBall performed-at 2 with-prob 1
 takeBall performed-at 5 with-prob 4/5
 takeBall performed-at 9
 takeBall performed-at 10 with-prob 7/9
