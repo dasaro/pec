@@ -44,12 +44,11 @@ inOcc(I) :-
 
 % Auxiliary predicates for CWA
 possiblyPerformed(A,I) :-
-	performed(A,I, frac(X,Y)),
-	X <= Y.
+	performed(A,I, frac(X,Y)).
 
 definitelyPerformed(A,I) :-
 		performed(A,I, frac(X,X)),
-		X>0.
+		X > 0.
 
 % Closed World Assumption
 :- action(A), instant(I), holds( ((A, false),I) ), definitelyPerformed(A,I).

@@ -1,5 +1,5 @@
 #!/bin/sh
-
+SECONDS = 0
 awk '
 BEGIN {
 				result=0
@@ -49,3 +49,5 @@ END {
 	print "ASP Time:", asptime
 }
 ';
+
+echo "Total Time: $(($SECONDS / 60))m$(($SECONDS % 60))s"
