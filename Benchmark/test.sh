@@ -8,5 +8,5 @@ pec_domain_independent="$installation_path/Reasoner/pec.lp";
 
 for f in $test_domains_folder/*
 do
-{ "$translator" < "$f" & cat "$pec_domain_independent"; } | clingo -n 0 | awk '/^Models/ { traces = $3 } /^Time/ { total = $3; solving = $5; } END { print traces, "\t", total, "\t", solving }' >> $report_dir/traces_tab_total_tab_solving.txt
+{ ../Translator/bin/translator < $f & cat ../Reasoner/pec.lp; } | clingo -n 0 | awk '/^Time/ { total = $3; solving = $5; print total, "\t", solving }' >> Reports/Antibiotic/Total_and_solving_time.txt
 done
