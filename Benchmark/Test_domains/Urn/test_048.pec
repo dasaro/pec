@@ -1,0 +1,125 @@
+bluesInBag takes-values {zero, one, two}
+redsInBag takes-values {zero, one, two, three}
+lastBallTaken takes-values {red, blue, none}
+
+initially-one-of { ( {bluesInBag=two, redsInBag=three, lastBallTaken=none}, 1 ) }
+
+{ bluesInBag=two, redsInBag=three, takeBall=true }
+    causes-one-of
+        {
+          ( {bluesInBag=one, redsInBag=three, lastBallTaken=blue}, 2/5 ),
+          ( {bluesInBag=two, redsInBag=two, lastBallTaken=red}, 3/5 )
+        }
+
+{ bluesInBag=two, redsInBag=two, takeBall=true }
+    causes-one-of
+        {
+          ( {bluesInBag=one, redsInBag=two, lastBallTaken=blue}, 1/2 ),
+          ( {bluesInBag=two, redsInBag=one, lastBallTaken=red}, 1/2 )
+        }
+
+{ bluesInBag=two, redsInBag=one, takeBall=true }
+    causes-one-of
+        {
+          ( {bluesInBag=one, redsInBag=one, lastBallTaken=blue}, 2/3 ),
+          ( {bluesInBag=two, redsInBag=zero, lastBallTaken=red}, 1/3 )
+        }
+
+{ bluesInBag=two, redsInBag=zero, takeBall=true }
+    causes-one-of
+        {
+          ( {bluesInBag=one, redsInBag=zero, lastBallTaken=blue}, 1 )
+        }
+
+{ bluesInBag=one, redsInBag=three, takeBall=true }
+    causes-one-of
+        {
+          ( {bluesInBag=zero, redsInBag=three, lastBallTaken=blue}, 1/4 ),
+          ( {bluesInBag=one, redsInBag=two, lastBallTaken=red}, 3/4 )
+        }
+
+{ bluesInBag=one, redsInBag=two, takeBall=true }
+    causes-one-of
+        {
+          ( {bluesInBag=zero, redsInBag=two, lastBallTaken=blue}, 1/3 ),
+          ( {bluesInBag=one, redsInBag=one, lastBallTaken=red}, 2/3 )
+        }
+
+{ bluesInBag=one, redsInBag=one, takeBall=true }
+    causes-one-of
+        {
+          ( {bluesInBag=zero, redsInBag=one, lastBallTaken=blue}, 1/2 ),
+          ( {bluesInBag=one, redsInBag=zero, lastBallTaken=red}, 1/2 )
+        }
+
+{ bluesInBag=one, redsInBag=zero, takeBall=true }
+    causes-one-of
+        {
+          ( {bluesInBag=zero, redsInBag=zero, lastBallTaken=blue}, 1 )
+        }
+
+{ bluesInBag=zero, redsInBag=three, takeBall=true }
+    causes-one-of
+        {
+          ( {bluesInBag=zero, redsInBag=two, lastBallTaken=red}, 1 )
+         }
+
+{ bluesInBag=zero, redsInBag=two, takeBall=true }
+   causes-one-of
+       {
+         ( {bluesInBag=zero, redsInBag=one, lastBallTaken=red}, 1 )
+       }
+
+{ bluesInBag=zero, redsInBag=one, takeBall=true }
+   causes-one-of
+       {
+         ( {bluesInBag=zero, redsInBag=zero, lastBallTaken=red}, 1 )
+       }
+takeBall performed-at 0
+takeBall performed-at 1
+takeBall performed-at 2
+takeBall performed-at 3
+takeBall performed-at 4
+takeBall performed-at 5
+takeBall performed-at 6
+takeBall performed-at 7
+takeBall performed-at 8
+takeBall performed-at 9
+takeBall performed-at 10
+takeBall performed-at 11
+takeBall performed-at 12
+takeBall performed-at 13
+takeBall performed-at 14
+takeBall performed-at 15
+takeBall performed-at 16
+takeBall performed-at 17
+takeBall performed-at 18
+takeBall performed-at 19
+takeBall performed-at 20
+takeBall performed-at 21
+takeBall performed-at 22
+takeBall performed-at 23
+takeBall performed-at 24
+takeBall performed-at 25
+takeBall performed-at 26
+takeBall performed-at 27
+takeBall performed-at 28
+takeBall performed-at 29
+takeBall performed-at 30
+takeBall performed-at 31
+takeBall performed-at 32
+takeBall performed-at 33
+takeBall performed-at 34
+takeBall performed-at 35
+takeBall performed-at 36
+takeBall performed-at 37
+takeBall performed-at 38
+takeBall performed-at 39
+takeBall performed-at 40
+takeBall performed-at 41
+takeBall performed-at 42
+takeBall performed-at 43
+takeBall performed-at 44
+takeBall performed-at 45
+takeBall performed-at 46
+takeBall performed-at 47

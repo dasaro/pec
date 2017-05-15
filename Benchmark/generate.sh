@@ -1,15 +1,18 @@
 #!/bin/sh
-for i in $(seq -f %003g 1 999)
+seed_file="seed.pec"
+test_domains_folder="Test_domains/Antibiotic/"
+
+for i in $(seq -f %003g 1 99)
 do
-    cp seed.pec Test_domains/test_$i.pec
+    cp "$seed_file" "$test_domains_folder/test_$i.pec"
 done
 
 i=0
-for f in Test_domains/*
+for f in $test_domains_folder/*
 do
     ((i++))
-    for ((j=0; j<=i*25; j=j+5))
+    for ((j=0; j<i; j++))
     do
-        echo "takesMedicine performed-at $j" >> $f
+        echo "takesMedicine performed-at $j with-prob 2/3" >> $f
     done
 done

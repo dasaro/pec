@@ -1,0 +1,98 @@
+// Antibiotic Example
+
+bacteria takes-values {present, resistant, absent}
+rash takes-values {present, absent}
+
+initially-one-of
+					{
+						( {bacteria=present, rash=present}, 9/10 ),
+						( {bacteria=absent, rash=present}, 1/10 )
+					}
+
+{takesMedicine=true, bacteria=present} causes-one-of
+					{
+						( {bacteria=absent, rash=absent}, 7/10 ),
+						( {bacteria=resistant, rash=absent}, 1/10 ),
+						( {bacteria=resistant}, 2/10 )
+					}
+
+{takesMedicine=true, bacteria=resistant} causes-one-of
+					{
+						( {bacteria=absent, rash=absent}, 1/13 ),
+						( {}, 12/13 )
+					}
+takesMedicine performed-at 0 with-prob 2/3
+takesMedicine performed-at 1 with-prob 2/3
+takesMedicine performed-at 2 with-prob 2/3
+takesMedicine performed-at 3 with-prob 2/3
+takesMedicine performed-at 4 with-prob 2/3
+takesMedicine performed-at 5 with-prob 2/3
+takesMedicine performed-at 6 with-prob 2/3
+takesMedicine performed-at 7 with-prob 2/3
+takesMedicine performed-at 8 with-prob 2/3
+takesMedicine performed-at 9 with-prob 2/3
+takesMedicine performed-at 10 with-prob 2/3
+takesMedicine performed-at 11 with-prob 2/3
+takesMedicine performed-at 12 with-prob 2/3
+takesMedicine performed-at 13 with-prob 2/3
+takesMedicine performed-at 14 with-prob 2/3
+takesMedicine performed-at 15 with-prob 2/3
+takesMedicine performed-at 16 with-prob 2/3
+takesMedicine performed-at 17 with-prob 2/3
+takesMedicine performed-at 18 with-prob 2/3
+takesMedicine performed-at 19 with-prob 2/3
+takesMedicine performed-at 20 with-prob 2/3
+takesMedicine performed-at 21 with-prob 2/3
+takesMedicine performed-at 22 with-prob 2/3
+takesMedicine performed-at 23 with-prob 2/3
+takesMedicine performed-at 24 with-prob 2/3
+takesMedicine performed-at 25 with-prob 2/3
+takesMedicine performed-at 26 with-prob 2/3
+takesMedicine performed-at 27 with-prob 2/3
+takesMedicine performed-at 28 with-prob 2/3
+takesMedicine performed-at 29 with-prob 2/3
+takesMedicine performed-at 30 with-prob 2/3
+takesMedicine performed-at 31 with-prob 2/3
+takesMedicine performed-at 32 with-prob 2/3
+takesMedicine performed-at 33 with-prob 2/3
+takesMedicine performed-at 34 with-prob 2/3
+takesMedicine performed-at 35 with-prob 2/3
+takesMedicine performed-at 36 with-prob 2/3
+takesMedicine performed-at 37 with-prob 2/3
+takesMedicine performed-at 38 with-prob 2/3
+takesMedicine performed-at 39 with-prob 2/3
+takesMedicine performed-at 40 with-prob 2/3
+takesMedicine performed-at 41 with-prob 2/3
+takesMedicine performed-at 42 with-prob 2/3
+takesMedicine performed-at 43 with-prob 2/3
+takesMedicine performed-at 44 with-prob 2/3
+takesMedicine performed-at 45 with-prob 2/3
+takesMedicine performed-at 46 with-prob 2/3
+takesMedicine performed-at 47 with-prob 2/3
+takesMedicine performed-at 48 with-prob 2/3
+takesMedicine performed-at 49 with-prob 2/3
+takesMedicine performed-at 50 with-prob 2/3
+takesMedicine performed-at 51 with-prob 2/3
+takesMedicine performed-at 52 with-prob 2/3
+takesMedicine performed-at 53 with-prob 2/3
+takesMedicine performed-at 54 with-prob 2/3
+takesMedicine performed-at 55 with-prob 2/3
+takesMedicine performed-at 56 with-prob 2/3
+takesMedicine performed-at 57 with-prob 2/3
+takesMedicine performed-at 58 with-prob 2/3
+takesMedicine performed-at 59 with-prob 2/3
+takesMedicine performed-at 60 with-prob 2/3
+takesMedicine performed-at 61 with-prob 2/3
+takesMedicine performed-at 62 with-prob 2/3
+takesMedicine performed-at 63 with-prob 2/3
+takesMedicine performed-at 64 with-prob 2/3
+takesMedicine performed-at 65 with-prob 2/3
+takesMedicine performed-at 66 with-prob 2/3
+takesMedicine performed-at 67 with-prob 2/3
+takesMedicine performed-at 68 with-prob 2/3
+takesMedicine performed-at 69 with-prob 2/3
+takesMedicine performed-at 70 with-prob 2/3
+takesMedicine performed-at 71 with-prob 2/3
+takesMedicine performed-at 72 with-prob 2/3
+takesMedicine performed-at 73 with-prob 2/3
+takesMedicine performed-at 74 with-prob 2/3
