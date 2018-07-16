@@ -50,9 +50,10 @@ extern int yydebug;
     PERFORMEDAT = 260,
     TAKESVALUES = 261,
     WITHPROB = 262,
-    OBJECT = 263,
-    FRACTION = 264,
-    INTEGER = 265
+    IFHOLDS = 263,
+    OBJECT = 264,
+    FRACTION = 265,
+    INTEGER = 266
   };
 #endif
 
@@ -61,7 +62,7 @@ extern int yydebug;
 
 union YYSTYPE
 {
-#line 31 "grammar.y" /* yacc.c:1909  */
+#line 32 "grammar.y" /* yacc.c:1909  */
 
 	TwoDimensionalArray pairs_array;
 	Array string_array;
@@ -69,7 +70,7 @@ union YYSTYPE
 	double double_val;
 	char *string;
 
-#line 73 "grammar.tab.h" /* yacc.c:1909  */
+#line 74 "grammar.tab.h" /* yacc.c:1909  */
 };
 
 typedef union YYSTYPE YYSTYPE;

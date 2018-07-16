@@ -1,0 +1,19 @@
+fluent(f). possVal(f, true). possVal(f, false). 
+belongsTo((f,false), id0).
+initialCondition( (id0, frac(9,10)) ).
+
+belongsTo((f,true), id1).
+initialCondition( (id1, frac(1,10)) ).
+
+causedOutcome( (id2, frac(9,10)), I) :-
+	holds( ((a,true),I) ).
+
+belongsTo((f,false), id3).
+causedOutcome( (id3, frac(1,10)), I) :-
+	holds( ((a,true),I) ).
+
+performed(a, I, frac(1,1)) :-
+	holds( ((f,true),I) ),
+	I<maxinstant.
+
+#const maxinstant=1.

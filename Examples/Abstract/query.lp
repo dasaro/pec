@@ -1,2 +1,1 @@
-holds( ((f,false),2) ).
-holds( ((g,a),0) ).
+holds( ((f,a),1) ).

@@ -1,0 +1,19 @@
+// D'_L as in the Light Switch Scenario
+
+light takes-values {on, off}
+
+initially-one-of
+		{ ( {light=on}, 1/2 ), ( {light=off}, 1/2 ) }
+
+{pickupKeys=true, location=inside} causes-one-of
+		{ ( {hasKeys=true}, 1 ) }
+
+{press=true, light=on} causes-one-of
+		{ ( {light=off}, 9/10 ) }
+
+{press=true, light=off} causes-one-of
+		{ ( {light=on}, 8/10 ) }
+
+senseLight performed-at 0
+
+press performed-at 1

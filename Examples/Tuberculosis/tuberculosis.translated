@@ -1,0 +1,333 @@
+fluent(tuberculosis). possVal(tuberculosis, active). possVal(tuberculosis, latent). possVal(tuberculosis, absent). 
+belongsTo((tuberculosis,absent), id0).
+initialCondition( (id0, frac(2,3)) ).
+
+belongsTo((tuberculosis,latent), id1).
+initialCondition( (id1, frac(9,30)) ).
+
+belongsTo((tuberculosis,active), id2).
+initialCondition( (id2, frac(1,30)) ).
+
+causedOutcome( (id3, frac(2,10)), I) :-
+	holds( ((tuberculosis,absent),I) ),
+	holds( ((exposure,true),I) ).
+
+belongsTo((tuberculosis,latent), id4).
+causedOutcome( (id4, frac(76,100)), I) :-
+	holds( ((tuberculosis,absent),I) ),
+	holds( ((exposure,true),I) ).
+
+belongsTo((tuberculosis,active), id5).
+causedOutcome( (id5, frac(4,100)), I) :-
+	holds( ((tuberculosis,absent),I) ),
+	holds( ((exposure,true),I) ).
+
+belongsTo((tuberculosis,active), id6).
+causedOutcome( (id6, frac(1,1)), I) :-
+	holds( ((tuberculosis,latent),I) ),
+	holds( ((reactivation,true),I) ).
+
+performed(exposure, 23, frac(2,10)).
+performed(exposure, 35, frac(9,10)).
+performed(reactivation, 0, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),0) ).
+
+performed(reactivation, 1, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),1) ).
+
+performed(reactivation, 2, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),2) ).
+
+performed(reactivation, 3, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),3) ).
+
+performed(reactivation, 4, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),4) ).
+
+performed(reactivation, 5, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),5) ).
+
+performed(reactivation, 6, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),6) ).
+
+performed(reactivation, 7, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),7) ).
+
+performed(reactivation, 8, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),8) ).
+
+performed(reactivation, 9, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),9) ).
+
+performed(reactivation, 10, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),10) ).
+
+performed(reactivation, 11, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),11) ).
+
+performed(reactivation, 12, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),12) ).
+
+performed(reactivation, 13, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),13) ).
+
+performed(reactivation, 14, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),14) ).
+
+performed(reactivation, 15, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),15) ).
+
+performed(reactivation, 16, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),16) ).
+
+performed(reactivation, 17, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),17) ).
+
+performed(reactivation, 18, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),18) ).
+
+performed(reactivation, 19, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),19) ).
+
+performed(reactivation, 20, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),20) ).
+
+performed(reactivation, 21, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),21) ).
+
+performed(reactivation, 22, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),22) ).
+
+performed(reactivation, 23, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),23) ).
+
+performed(reactivation, 24, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),24) ).
+
+performed(reactivation, 25, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),25) ).
+
+performed(reactivation, 26, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),26) ).
+
+performed(reactivation, 27, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),27) ).
+
+performed(reactivation, 28, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),28) ).
+
+performed(reactivation, 29, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),29) ).
+
+performed(reactivation, 30, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),30) ).
+
+performed(reactivation, 31, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),31) ).
+
+performed(reactivation, 32, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),32) ).
+
+performed(reactivation, 33, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),33) ).
+
+performed(reactivation, 34, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),34) ).
+
+performed(reactivation, 35, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),35) ).
+
+performed(reactivation, 36, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),36) ).
+
+performed(reactivation, 37, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),37) ).
+
+performed(reactivation, 38, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),38) ).
+
+performed(reactivation, 39, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),39) ).
+
+performed(reactivation, 40, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),40) ).
+
+performed(reactivation, 41, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),41) ).
+
+performed(reactivation, 42, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),42) ).
+
+performed(reactivation, 43, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),43) ).
+
+performed(reactivation, 44, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),44) ).
+
+performed(reactivation, 45, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),45) ).
+
+performed(reactivation, 46, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),46) ).
+
+performed(reactivation, 47, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),47) ).
+
+performed(reactivation, 48, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),48) ).
+
+performed(reactivation, 49, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),49) ).
+
+performed(reactivation, 50, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),50) ).
+
+performed(reactivation, 51, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),51) ).
+
+performed(reactivation, 52, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),52) ).
+
+performed(reactivation, 53, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),53) ).
+
+performed(reactivation, 54, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),54) ).
+
+performed(reactivation, 55, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),55) ).
+
+performed(reactivation, 56, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),56) ).
+
+performed(reactivation, 57, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),57) ).
+
+performed(reactivation, 58, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),58) ).
+
+performed(reactivation, 59, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),59) ).
+
+performed(reactivation, 60, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),60) ).
+
+performed(reactivation, 61, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),61) ).
+
+performed(reactivation, 62, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),62) ).
+
+performed(reactivation, 63, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),63) ).
+
+performed(reactivation, 64, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),64) ).
+
+performed(reactivation, 65, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),65) ).
+
+performed(reactivation, 66, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),66) ).
+
+performed(reactivation, 67, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),67) ).
+
+performed(reactivation, 68, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),68) ).
+
+performed(reactivation, 69, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),69) ).
+
+performed(reactivation, 70, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),70) ).
+
+performed(reactivation, 71, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),71) ).
+
+performed(reactivation, 72, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),72) ).
+
+performed(reactivation, 73, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),73) ).
+
+performed(reactivation, 74, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),74) ).
+
+performed(reactivation, 75, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),75) ).
+
+performed(reactivation, 76, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),76) ).
+
+performed(reactivation, 77, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),77) ).
+
+performed(reactivation, 78, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),78) ).
+
+performed(reactivation, 79, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),79) ).
+
+performed(reactivation, 80, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),80) ).
+
+performed(reactivation, 81, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),81) ).
+
+performed(reactivation, 82, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),82) ).
+
+performed(reactivation, 83, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),83) ).
+
+performed(reactivation, 84, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),84) ).
+
+performed(reactivation, 85, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),85) ).
+
+performed(reactivation, 86, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),86) ).
+
+performed(reactivation, 87, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),87) ).
+
+performed(reactivation, 88, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),88) ).
+
+performed(reactivation, 89, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),89) ).
+
+performed(reactivation, 90, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),90) ).
+
+performed(reactivation, 91, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),91) ).
+
+performed(reactivation, 92, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),92) ).
+
+performed(reactivation, 93, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),93) ).
+
+performed(reactivation, 94, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),94) ).
+
+performed(reactivation, 95, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),95) ).
+
+performed(reactivation, 96, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),96) ).
+
+performed(reactivation, 97, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),97) ).
+
+performed(reactivation, 98, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),98) ).
+
+performed(reactivation, 99, frac(8,10000)) :-
+	holds( ((tuberculosis,latent),99) ).
+
+
+#const maxinstant=100.

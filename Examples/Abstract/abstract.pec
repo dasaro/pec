@@ -1,12 +1,9 @@
 //First example
 
-f takes-values {true, false}
-g takes-values {a,b,c}
+f takes-values {a,b}
 
-initially-one-of { ( {f=false,g=a},8/10 ), ( {f=true,g=c}, 2/10 ) }
+initially-one-of { ({f=a},1/3), ({f=b},2/3) }
 
-{a=true, f=false} causes-one-of { ({f=true, g=a}, 1/10), ({}, 9/10) }
-{a=true, f=true} causes-one-of { ({f=false, g=c}, 1/10), ({f=false}, 85/100), ({g=a},5/100) }
+{a=true} causes-one-of { ({f=a},1/10), ({f=b},3/10), ({},6/10) }
 
-a performed-at 1 with-prob 2/3
-a performed-at 3
+a performed-at 0 with-prob 2/3

@@ -1,0 +1,9 @@
+// Coin toss domain
+
+coin takes-values {heads, tails}
+
+initially-one-of { ({coin=heads},1) }
+
+{toss=true} causes-one-of { ({coin=heads},49/100), ({coin=tails},49/100), ({},2/100) }
+
+toss performed-at 1

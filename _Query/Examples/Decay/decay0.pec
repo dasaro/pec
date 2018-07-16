@@ -1,0 +1,13 @@
+// Decay Example
+
+f takes-values {true, false}
+
+initially-one-of {
+		( {f=true}, 1 )
+	}
+
+{a=true} causes-one-of
+					{
+						( {f=false}, 1/5 ),
+						( {}, 4/5 )
+					}

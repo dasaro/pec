@@ -1,0 +1,29 @@
+// Decay Example
+
+f takes-values {true, false}
+
+initially-one-of {
+		( {f=true}, 1 )
+	}
+
+{a=true} causes-one-of
+					{
+						( {f=false}, 1/5 ),
+						( {}, 4/5 )
+					}
+
+a performed-at 0 with-prob 1/2
+a performed-at 1 with-prob 1/2
+a performed-at 2 with-prob 1/2
+a performed-at 3 with-prob 1/2
+a performed-at 4 with-prob 1/2
+a performed-at 5 with-prob 1/2
+a performed-at 6 with-prob 1/2
+a performed-at 7 with-prob 1/2
+a performed-at 8 with-prob 1/2
+a performed-at 9 with-prob 1/2
+a performed-at 10 with-prob 1/2
+a performed-at 11 with-prob 1/2
+a performed-at 12 with-prob 1/2
+a performed-at 13 with-prob 1/2
+a performed-at 14 with-prob 1/2

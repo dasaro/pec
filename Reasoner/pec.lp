@@ -4,9 +4,8 @@ action(A) :-
 	instant(I),
 	possiblyPerformed(A, I).
 
-possVal(X, true) :- boolean(X).
-possVal(X, false) :- boolean(X).
-boolean(A) :- action(A).
+possVal(X, true) :- action(X).
+possVal(X, false) :- action(X).
 fluentOrAction(X) :- fluent(X).
 fluentOrAction(X) :- action(X).
 
@@ -86,6 +85,7 @@ definitelyPerformed(A,I) :-
 eval(A,I,P) :- action(A), instant(I), performed(A,I,P), holds( ((A,true),I) ).
 eval(A,I,frac(X2,Y)) :- action(A), instant(I), performed(A,I,frac(X1,Y)), holds( ((A,false),I) ), X2 = Y - X1.
 
-#show initialChoice/1.
-#show effectChoice/2.
-#show eval/3.
+%#show holds/1.
+%#show initialChoice/1.
+%#show effectChoice/2.
+%#show eval/3.

@@ -1,5 +1,5 @@
 #!/bin/sh
-SECONDS = 0
+SECONDS=0
 awk '
 BEGIN {
 				result=0
@@ -33,21 +33,28 @@ BEGIN {
 }
 
 
-/Models/ {
+/^Models/ {
 	traces = $3
 }
 
-/Time/ {
-	asptime = $4
+/^Time/ {
+	total_time = $3
+	solving_time = $5
+}
+/^CPU Time/ {
+	cpu_time = $4
 }
 
 END {
-	print "============= RESULTS ============="
+	print "============= RESULTS =============="
 	print "N. Traces:", traces
 	print "P(query) =", result, "\n"
-	print "============= EL.TIME ============="
-	print "ASP Time:", asptime
+	
+	print "============= ASP TIME ============="
+	print "Time: ", total_time, "(Solving:", solving_time ,")"
+	print "CPU Time: ", cpu_time, "\n"
 }
 ';
 
+echo "============= TOTAL ================"
 echo "Total Time: $(($SECONDS / 60))m$(($SECONDS % 60))s"

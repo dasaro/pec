@@ -19,7 +19,8 @@ evaluation_script="$INSTALLATION_PATH/Reasoner/evaluate.sh";
 read -e -p "Locate PEC domain description: " pec_domain_description
 read -e -p "Locate query file (optional): " query_file
 if [ -n "$query_file" ]; then
-  { cat "$query_file" & "$translator" < "$pec_domain_description" & cat "$pec_domain_independent"; } | clingo -n 0 | "$evaluation_script"
+  # Output models and then post-processes traces to get a probability
+  { cat "$query_file" & "$translator" < "$pec_domain_description" & cat "$pec_domain_independent"; } | clingo -n 0 | tee /dev/tty | "$evaluation_script"
 else
   { "$translator" < "$pec_domain_description" & cat "$pec_domain_independent"; } | clingo -n 0
 fi

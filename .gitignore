@@ -1,2 +1,5 @@
+#Ignore folder attributes
 .DS_Store
 
+#Ignore old dir
+OLD-pec_implem/

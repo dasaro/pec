@@ -3,12 +3,12 @@
 #include <stdlib.h>
 #include <string.h>
 #include "dynamicarray.h"
+#include "Symbol_Table/symbol_table.h"
 
 int yylex(void);
 void yyerror (char *);
-int yywrap (void);
-
 extern int identifier;
+
 %}
 
 %start domain_description
@@ -18,6 +18,7 @@ extern int identifier;
 %token PERFORMEDAT
 %token TAKESVALUES
 %token WITHPROB
+%token IFHOLDS
 %token '(' ')'
 %token '{' '}'
 %token ',' ';'
@@ -107,21 +108,51 @@ takesvalues:
 ;
 
 performed:
-	performed_full_form | performed_shorthand
+	performed_full_form | performed_shorthand1 | performed_shorthand2 | performed_shorthand3
 ;
 
 performed_full_form:
+	OBJECT PERFORMEDAT instant WITHPROB prob IFHOLDS '{' nonempty_list_assignments '}'
+	{
+		printf("performed(%s, %d, %s) :-\n", $1, $3, $5);
+
+		for (int i=0; i<$8.used; i++) {
+			printf("\tholds( (%s,%d) )",$8.array[i],$3);
+
+			if (i<$8.used-1)
+				printf(",\n");
+			else
+				printf(".\n\n");
+		}
+	}
+;
+
+performed_shorthand1:
 	OBJECT PERFORMEDAT instant WITHPROB prob { printf("performed(%s, %d, %s).\n", $1, $3, $5); }
 ;
 
-performed_shorthand:
+performed_shorthand2:
+	OBJECT PERFORMEDAT instant IFHOLDS '{' nonempty_list_assignments '}' {
+		printf("performed(%s, %d, frac(1,1)) :-\n", $1, $3);
+
+		for (int i=0; i<$6.used; i++) {
+			printf("\tholds( (%s,I) )",$6.array[i]);
+
+			if (i<$6.used-1)
+				printf(",\n");
+			else
+				printf(".\n\n");
+		}
+	}
+;
+
+performed_shorthand3:
 	OBJECT PERFORMEDAT instant { printf("performed(%s, %d, frac(1,1)).\n", $1, $3); }
 ;
 
 causes:
 	'{' nonempty_list_assignments '}' CAUSESONEOF '{' list_pairs '}'
 									{
-
 										for (int i=0; i<$6.used; i++) {
 
 												for (int j=0; j<$6.array[i].used; j++) {
@@ -132,6 +163,7 @@ causes:
 
 												for (int k=0; k<$2.used; k++) {
 													printf("\tholds( (%s,I) )",$2.array[k]);
+
 													if (k<$2.used-1)
 														printf(",\n");
 													else
@@ -197,7 +229,7 @@ nonempty_list_assignments:
 assignment:
 	OBJECT '=' OBJECT	{
 							char *aux;
-							aux = (char *) malloc ( sizeof(char) * (strlen($1) + strlen($3) + 3) );
+							aux = (char *) malloc(sizeof(char) * (strlen($1) + strlen($3) + 3));
 							sprintf(aux, "(%s,%s)", $1, $3);
 							$$ = strdup(aux);
 							free(aux);

@@ -13,6 +13,7 @@ int line=0;
 int yyparse (void);
 %}
 
+%option noyywrap
 %x comment
 
 %%
@@ -26,6 +27,7 @@ initially-one-of	return INITIALLYONEOF;
 performed-at		return PERFORMEDAT;
 takes-values		return TAKESVALUES;
 with-prob			return WITHPROB;
+if-holds			return IFHOLDS;
 [1{}(),;=]			return *yytext;
 
 [0-9]+			{
@@ -63,15 +65,12 @@ with-prob			return WITHPROB;
 							return FRACTION;
 						}
 
-[ \t\r]			;
+[ \t\r]				;
 \n 					line++;
+
 %%
 
 void yyerror (char *string) { printf("LEXER ERROR ON LINE %d: %s.\n",line,string ); }
-
-int yywrap (void) {
-	/* empty */
-}
 
 int main ( void ) {
 	yyparse();
