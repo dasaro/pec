@@ -1,0 +1,14 @@
+
+engagement takes-values {true, false}
+
+initially-one-of { ( {engagement=true}, 9/10 ), ( {engagement=false}, 1/10 ) }
+
+{negativeEEG=true} causes-one-of { ( {engagement=false}, 1/1 ) }
+
+{positiveEEG=true} causes-one-of { ( {engagement=true}, 1/1 ) }
+
+negativeEEG performed-at 0 with-prob 1/6
+
+positiveEEG performed-at 1 with-prob 9/11
+
+

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 #
 # INSTALLATION PATH:
@@ -24,3 +24,4 @@ if [ -n "$query_file" ]; then
 else
   { "$translator" < "$pec_domain_description" & cat "$pec_domain_independent"; } | clingo -n 0
 fi
+
