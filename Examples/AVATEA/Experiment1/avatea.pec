@@ -1,0 +1,64 @@
+// AVATEA
+// Preliminary experiments
+// 
+// +----------------+
+// | Experiment n.1 |
+// +----------------+
+
+// Activities to detect:
+engagement takes-values {true, false}
+taskCorrect takes-values {true, false}
+
+// The subject is thought to be initially engaged
+// and carrying out the task correctly:
+initially-one-of { ({engagement=true,taskCorrect=true},1) }
+
+// Activities received from the classifier are:
+// 1. (Camera ->) Eyes not following target
+// 2. (EEG ->) Low level of attention
+// 3. (Motion sensor & Camera ->) Bad posture
+{ eyesNotFollowingTarget=true, lowAttention=false, badPosture=false, engagement=true }
+	causes-one-of
+		{ ({taskCorrect=false,engagement=false},1/10),
+	          ({taskCorrect=false},1/10) }
+
+{ eyesNotFollowingTarget=true, lowAttention=false, badPosture=false, engagement=false }
+	causes-one-of
+		{ ({taskCorrect=false,engagement=true},3/10) }
+
+{ eyesNotFollowingTarget=false, lowAttention=true, badPosture=false }
+	causes-one-of
+		{ ({engagement=false,taskCorrect=true},1/10) }
+
+{ eyesNotFollowingTarget=true, lowAttention=true, badPosture=false }
+	causes-one-of
+		{ ({taskCorrect=false,engagement=false},2/10),
+	          ({taskCorrect=false},1/10) }
+
+{ eyesNotFollowingTarget=false, lowAttention=false, badPosture=true }
+	causes-one-of
+		{ ({taskCorrect=false,engagement=true},1/10),
+	          ({taskCorrect=false},1/10) }
+
+{ eyesNotFollowingTarget=true, lowAttention=false, badPosture=true }
+	causes-one-of
+		{ ({taskCorrect=false,engagement=true},1/10),
+	          ({taskCorrect=false},2/10) }
+
+{ eyesNotFollowingTarget=true, lowAttention=true, badPosture=true }
+	causes-one-of
+		{ ({taskCorrect=false,engagement=false},2/10),
+	          ({taskCorrect=false},2/10) }
+
+// Sequence of events:
+lowAttention performed-at 0 with-prob 1/1000
+eyesNotFollowingTarget performed-at 0 with-prob 1/1000
+badPosture performed-at 0 with-prob 1/1000
+
+eyesNotFollowingTarget performed-at 2 with-prob 1/100
+lowAttention performed-at 2 with-prob 2/100
+
+eyesNotFollowingTarget performed-at 3 with-prob 7/100
+
+eyesNotFollowingTarget performed-at 5 with-prob 2/100
+eyesNotFollowingTarget performed-at 10 with-prob 1/100

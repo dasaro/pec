@@ -3,3 +3,6 @@
 
 #Ignore old dir
 OLD-pec_implem/
+
+#Ignore binaries
+/Translator/bin
