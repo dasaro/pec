@@ -17,40 +17,51 @@ initially-one-of { ({engagement=true,taskCorrect=true},1) }
 // 1. (Camera ->) Eyes not following target
 // 2. (EEG ->) Low level of attention
 // 3. (Motion sensor & Camera ->) Bad posture
-{ eyesNotFollowingTarget=true, lowAttention=false, badPosture=false, engagement=true }
+{ clock=true, eyesNotFollowingTarget=true, lowAttention=false, badPosture=false }
 	causes-one-of
 		{ ({taskCorrect=false,engagement=false},1/10),
 	          ({taskCorrect=false},1/10) }
 
-{ eyesNotFollowingTarget=true, lowAttention=false, badPosture=false, engagement=false }
+{ clock=true, eyesNotFollowingTarget=true, lowAttention=false, badPosture=false }
 	causes-one-of
-		{ ({taskCorrect=false,engagement=true},3/10) }
+		{ ({taskCorrect=false},3/10) }
 
-{ eyesNotFollowingTarget=false, lowAttention=true, badPosture=false }
+{ clock=true, eyesNotFollowingTarget=false, lowAttention=true, badPosture=false }
 	causes-one-of
 		{ ({engagement=false,taskCorrect=true},1/10) }
 
-{ eyesNotFollowingTarget=true, lowAttention=true, badPosture=false }
+{ clock=true, eyesNotFollowingTarget=true, lowAttention=true, badPosture=false }
 	causes-one-of
-		{ ({taskCorrect=false,engagement=false},2/10),
+		{ ({taskCorrect=false,engagement=false},2/10) }
+
+{ clock=true, eyesNotFollowingTarget=false, lowAttention=false, badPosture=true }
+	causes-one-of
+		{ ({taskCorrect=false,engagement=false},1/10),
 	          ({taskCorrect=false},1/10) }
 
-{ eyesNotFollowingTarget=false, lowAttention=false, badPosture=true }
+{ clock=true, eyesNotFollowingTarget=true, lowAttention=false, badPosture=true }
 	causes-one-of
-		{ ({taskCorrect=false,engagement=true},1/10),
-	          ({taskCorrect=false},1/10) }
-
-{ eyesNotFollowingTarget=true, lowAttention=false, badPosture=true }
-	causes-one-of
-		{ ({taskCorrect=false,engagement=true},1/10),
+		{ ({taskCorrect=false,engagement=false},1/10),
 	          ({taskCorrect=false},2/10) }
 
-{ eyesNotFollowingTarget=true, lowAttention=true, badPosture=true }
+{ clock=true, eyesNotFollowingTarget=true, lowAttention=true, badPosture=true }
 	causes-one-of
 		{ ({taskCorrect=false,engagement=false},2/10),
 	          ({taskCorrect=false},2/10) }
 
 // Sequence of events:
+clock performed-at 0
+clock performed-at 1
+clock performed-at 2
+clock performed-at 3
+clock performed-at 4
+clock performed-at 5
+clock performed-at 6
+clock performed-at 7
+clock performed-at 8
+clock performed-at 9
+clock performed-at 10
+
 lowAttention performed-at 0 with-prob 1/1000
 eyesNotFollowingTarget performed-at 0 with-prob 1/1000
 badPosture performed-at 0 with-prob 1/1000
@@ -60,5 +71,10 @@ lowAttention performed-at 2 with-prob 2/100
 
 eyesNotFollowingTarget performed-at 3 with-prob 7/100
 
+lowAttention performed-at 4 with-prob 1
+eyesNotFollowingTarget performed-at 4 with-prob 1
+badPosture performed-at 4 with-prob 1
+
 eyesNotFollowingTarget performed-at 5 with-prob 2/100
 eyesNotFollowingTarget performed-at 10 with-prob 1/100
+
