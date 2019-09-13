@@ -2,7 +2,7 @@
 // Preliminary experiments
 // 
 // +----------------+
-// | Experiment n.1 |
+// | Experiment n.2 |
 // +----------------+
 
 // Activities to detect:
@@ -65,19 +65,23 @@ initially-one-of { ({engagement=true,taskCorrect=true},1) }
 lowAttention performed-at 0
 eyesNotFollowingTarget performed-at 0
 badPosture performed-at 0
-lowAttention performed-at 1
-eyesNotFollowingTarget performed-at 1
-badPosture performed-at 1
-eyesNotFollowingTarget performed-at 2 with-prob 76/100
-lowAttention performed-at 2 with-prob 87/100
-lowAttention performed-at 3
-eyesNotFollowingTarget performed-at 3
-badPosture performed-at 3
-eyesNotFollowingTarget performed-at 7 with-prob 7/100
-eyesNotFollowingTarget performed-at 8 with-prob 89/100
-eyesNotFollowingTarget performed-at 9 with-prob 74/100
-eyesNotFollowingTarget performed-at 11
+//lowAttention performed-at 1
+//eyesNotFollowingTarget performed-at 1
+//badPosture performed-at 1
+//eyesNotFollowingTarget performed-at 2 with-prob 76/100
+//lowAttention performed-at 2 with-prob 87/100
+//lowAttention performed-at 3
+//eyesNotFollowingTarget performed-at 3
+//badPosture performed-at 3
+//eyesNotFollowingTarget performed-at 7 with-prob 7/100
+//eyesNotFollowingTarget performed-at 8 with-prob 89/100
+//eyesNotFollowingTarget performed-at 9 with-prob 74/100
+//eyesNotFollowingTarget performed-at 11
 //eyesNotFollowingTarget performed-at 12 with-prob 66/100
 //eyesNotFollowingTarget performed-at 13 with-prob 43/100
 //badPosture performed-at 13
 //eyesNotFollowingTarget performed-at 14 with-prob 88/100
+
+lowAttention performed-at 1
+eyesNotFollowingTarget performed-at 1
+badPosture performed-at 1

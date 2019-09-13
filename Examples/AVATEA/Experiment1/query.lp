@@ -1,2 +1,2 @@
-holds( ((engagement,true),5) ).
-
+holds( ((engagement,true),4) ).
+holds( ((taskCorrect,true),4) ).
