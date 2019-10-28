@@ -9,8 +9,8 @@ pec_domain_independent="$installation_path/Reasoner/pec.lp";
 evaluation_script="$installation_path/Reasoner/evaluate.sh";
 #
 last_instant=12
-domain_description="../Examples/AVATEA/Experiment1/avatea.pec"
-report_dir="Reports/AVATEA/Experiment1"
+domain_description="../Examples/AVATEA/Experiment9/avatea.pec"
+report_dir="Reports/AVATEA/Experiment9"
 report_file="taskCorrect.txt"
 query="(taskCorrect,true)"
 ######################################################################

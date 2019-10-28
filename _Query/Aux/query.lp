@@ -1,1 +1,1 @@
-holds(((taskCorrect,true),1)).
+holds(((taskCorrect,true),12)).
