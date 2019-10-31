@@ -3,6 +3,7 @@ import clingo
 import subprocess
 
 translator_bin = "Translator/bin/translator"
+pec_domain_independent = "pec.lp"
 
 def main():
     
@@ -16,7 +17,7 @@ def main():
     main = clingo.Control()
     main.configuration.solve.models = 0
     translated_domain = (subprocess.run("%s < %s" % (translator_bin,args.filename), shell=True, stdout=subprocess.PIPE)).stdout.decode("utf-8")    
-    main.load("Reasoner/pec.lp")
+    main.load(pec_domain_independent)
     main.add("base", [], translated_domain)
     
     if (args.query != ""):
