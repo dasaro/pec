@@ -1,6 +1,6 @@
 #!/bin/sh
-test_domains_folder="Test_domains/Antibiotic/"
-report_dir="Reports/Antibiotic/"
+test_domains_folder="Test_domains/Decay-Frontiers/"
+report_dir="Reports/Decay-Frontiers/"
 #
 installation_path=".."
 translator="$installation_path/Translator/bin/translator";

@@ -1,0 +1,17 @@
+// Antibiotic Example
+
+f takes-values {true, false}
+
+initially-one-of { ( {f=true}, 1/1 ) }
+
+{a=true} causes-one-of { ( {f=false}, 1/2 ), ( {}, 1/2 )}
+a performed-at 0 with-prob 100000/100000
+a performed-at 1 with-prob 50000/100000
+a performed-at 2 with-prob 33333/100000
+a performed-at 3 with-prob 25000/100000
+a performed-at 4 with-prob 20000/100000
+a performed-at 5 with-prob 16666/100000
+a performed-at 6 with-prob 14285/100000
+a performed-at 7 with-prob 12500/100000
+a performed-at 8 with-prob 11111/100000
+a performed-at 9 with-prob 10000/100000

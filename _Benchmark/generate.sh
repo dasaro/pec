@@ -1,8 +1,8 @@
-#!/bin/sh
+#!/bin/bash
 seed_file="seed.pec"
-test_domains_folder="Test_domains/Antibiotic/"
+test_domains_folder="Test_domains/Decay-Frontiers/"
 
-for i in $(seq -f %003g 1 99)
+for i in $(seq -f %003g 1 50)
 do
     cp "$seed_file" "$test_domains_folder/test_$i.pec"
 done
@@ -13,6 +13,6 @@ do
     ((i++))
     for ((j=0; j<i; j++))
     do
-        echo "takesMedicine performed-at $j with-prob 2/3" >> $f
+        echo "a performed-at $j with-prob $(awk "BEGIN{printf int(100000/($j+1))}")/100000" >> $f
     done
 done

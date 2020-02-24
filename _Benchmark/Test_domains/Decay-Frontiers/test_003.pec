@@ -5,3 +5,6 @@ f takes-values {true, false}
 initially-one-of { ( {f=true}, 1/1 ) }
 
 {a=true} causes-one-of { ( {f=false}, 1/2 ), ( {}, 1/2 )}
+a performed-at 0 with-prob 100000/100000
+a performed-at 1 with-prob 50000/100000
+a performed-at 2 with-prob 33333/100000
